@@ -1,0 +1,1139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Flask-Login — Flask-Login 0.3.2 documentation</title>
+    
+    <link rel="stylesheet" href="Flask-Login%20%E2%80%94%20Flask-Login%200.3.2%20documentation_files/flasky.css" type="text/css">
+    <link rel="stylesheet" href="Flask-Login%20%E2%80%94%20Flask-Login%200.3.2%20documentation_files/pygments.css" type="text/css">
+    <link rel="stylesheet" href="Flask-Login%20%E2%80%94%20Flask-Login%200.3.2%20documentation_files/badge_only.css" type="text/css">
+    <link rel="stylesheet" href="Flask-Login%20%E2%80%94%20Flask-Login%200.3.2%20documentation_files/readthedocs-doc-embed.css" type="text/css">
+    
+    <script src="Flask-Login%20%E2%80%94%20Flask-Login%200.3.2%20documentation_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.3.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="Flask-Login%20%E2%80%94%20Flask-Login%200.3.2%20documentation_files/jquery-2.js"></script>
+    <script type="text/javascript" src="Flask-Login%20%E2%80%94%20Flask-Login%200.3.2%20documentation_files/jquery-migrate-1.js"></script>
+    <script type="text/javascript" src="Flask-Login%20%E2%80%94%20Flask-Login%200.3.2%20documentation_files/underscore.js"></script>
+    <script type="text/javascript" src="Flask-Login%20%E2%80%94%20Flask-Login%200.3.2%20documentation_files/doctools.js"></script>
+    <script type="text/javascript" src="Flask-Login%20%E2%80%94%20Flask-Login%200.3.2%20documentation_files/readthedocs-doc-embed.js"></script>
+    <link rel="top" title="Flask-Login 0.3.2 documentation" href="#">
+ 
+<!-- RTD Extra Head -->
+
+    
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://flask-login.readthedocs.org/en/latest/">
+<script type="text/javascript">
+  // This is included here because other places don't have access to the pagename variable.
+  var READTHEDOCS_DATA = {
+    project: "flask-login",
+    version: "latest",
+    language: "en",
+    page: "index",
+    builder: "sphinx",
+    theme: "flask_small",
+    docroot: "/docs/",
+    
+    source_suffix: ".rst",
+    
+    api_host: "https://readthedocs.org/",
+    commit: "1e7fa7ec"
+  }
+  // Old variables
+  var doc_version = "latest";
+  var doc_slug = "flask-login";
+  var page_name = "index";
+  var html_theme = "flask_small";
+</script>
+<!-- RTD Analytics Code -->
+<!-- Included in the header because you don't have a footer block. -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17997319-1']);
+  _gaq.push(['_trackPageview']);
+
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- end RTD Analytics Code -->
+<!-- end RTD <extrahead> -->
+
+  </head>
+  <body role="document">
+  
+  
+  <div id="dic_bubble" class="selection_bubble fontSize13 noSelect" style="z-index: 9999; border: 1px solid rgb(74, 174, 222); visibility: hidden; top: 10965px; left: 410px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-size: 10pt; font-family: Helvetica;"><div class="selection_bubble_content"><div class="selection_bubble_word" id="selection_bubble_word">		<img src="Flask-Login%20%E2%80%94%20Flask-Login%200.3.2%20documentation_files/closeIcon.png" id="selection_bubble_close" align="right"><span style="font-weight:bold;padding-right:10px;">user</span><span style="padding-right:5px;font-size:12px;"><img style="position: relative;top: 4px;display:inline;cursor:pointer;" src="Flask-Login%20%E2%80%94%20Flask-Login%200.3.2%20documentation_files/Audioicon.png" id="playSound"></span><span class="selection_bubble_align_with_spearker">[<span style="padding-right:2px;"> <span class="dbus_pron_b">yoo</span>-zer</span>]</span><span id="soundBox">&nbsp;</span></div><div id="dic_bubble_difinition">		<i class="selection_bubble_title">noun</i>		<div id="dic_bubble_dif" class="dic_dif"><div class="item"><div class="itemCount">1.</div><div class="itemData"> a person or thing that <a class="dbus_targterm" href="https://flask-login.readthedocs.org/en/latest/@@BROWSE_URL@@use">uses</a>.</div></div></div></div> <div id="dic_bubble_synonyms"> <div class="selection_bubble_synonyms">synonyms</div> <div id="selection_bubble_defintion"><span><a href="https://flask-login.readthedocs.org/browse/"></a></span></div></div><div id="selection_bubble_more_action">		<span>			<a href="http://app.dictionary.com/click/hbnm17?clkdest=http://dictionary.reference.com/browse/" target="_blank">				<img src="Flask-Login%20%E2%80%94%20Flask-Login%200.3.2%20documentation_files/more.png" alt="Dictionary More">			</a>		</span>		<a href="http://app.dictionary.com/click/rovvlr?clkdest=http://dictionary.reference.com/" target="_blank">			<img style="position: relative;bottom: 5px;" src="Flask-Login%20%E2%80%94%20Flask-Login%200.3.2%20documentation_files/pop-up_logo.png" alt="Dictionary.com" align="right">		</a> </div></div><div class="dic-arrow-below" style="null"></div><div class="dic-bubble-arrow-below" style="border-bottom:20px solid #ffffff; null"></div></div><div class="indexwrapper">
+  
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="flask-login">
+<h1>Flask-Login<a class="headerlink" href="#flask-login" title="Permalink to this headline">¶</a></h1>
+<p>Flask-Login provides user session management for Flask. It handles the common
+tasks of logging in, logging out, and remembering your users’ sessions over
+extended periods of time.</p>
+<p>It will:</p>
+<ul class="simple">
+<li>Store the active user’s ID in the session, and let you log them in and out
+easily.</li>
+<li>Let you restrict views to logged-in (or logged-out) users.</li>
+<li>Handle the normally-tricky “remember me” functionality.</li>
+<li>Help protect your users’ sessions from being stolen by cookie thieves.</li>
+<li>Possibly integrate with Flask-Principal or other authorization extensions
+later on.</li>
+</ul>
+<p>However, it does not:</p>
+<ul class="simple">
+<li>Impose a particular database or other storage method on you. You are
+entirely in charge of how the user is loaded.</li>
+<li>Restrict you to using usernames and passwords, OpenIDs, or any other method
+of authenticating.</li>
+<li>Handle permissions beyond “logged in or not.”</li>
+<li>Handle user registration or account recovery.</li>
+</ul>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#configuring-your-application" id="id2">Configuring your Application</a></li>
+<li><a class="reference internal" href="#how-it-works" id="id3">How it Works</a></li>
+<li><a class="reference internal" href="#your-user-class" id="id4">Your User Class</a></li>
+<li><a class="reference internal" href="#login-example" id="id5">Login Example</a></li>
+<li><a class="reference internal" href="#customizing-the-login-process" id="id6">Customizing the Login Process</a></li>
+<li><a class="reference internal" href="#login-using-authorization-header" id="id7">Login using Authorization header</a></li>
+<li><a class="reference internal" href="#custom-login-using-request-loader" id="id8">Custom Login using Request Loader</a></li>
+<li><a class="reference internal" href="#anonymous-users" id="id9">Anonymous Users</a></li>
+<li><a class="reference internal" href="#remember-me" id="id10">Remember Me</a><ul>
+<li><a class="reference internal" href="#alternative-tokens" id="id11">Alternative Tokens</a></li>
+<li><a class="reference internal" href="#fresh-logins" id="id12">Fresh Logins</a></li>
+<li><a class="reference internal" href="#cookie-settings" id="id13">Cookie Settings</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#session-protection" id="id14">Session Protection</a></li>
+<li><a class="reference internal" href="#localization" id="id15">Localization</a></li>
+<li><a class="reference internal" href="#api-documentation" id="id16">API Documentation</a><ul>
+<li><a class="reference internal" href="#configuring-login" id="id17">Configuring Login</a></li>
+<li><a class="reference internal" href="#login-mechanisms" id="id18">Login Mechanisms</a></li>
+<li><a class="reference internal" href="#protecting-views" id="id19">Protecting Views</a></li>
+<li><a class="reference internal" href="#user-object-helpers" id="id20">User Object Helpers</a></li>
+<li><a class="reference internal" href="#utilities" id="id21">Utilities</a></li>
+<li><a class="reference internal" href="#signals" id="id22">Signals</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="configuring-your-application">
+<h2>Configuring your Application<a class="headerlink" href="#configuring-your-application" title="Permalink to this headline">¶</a></h2>
+<p>The most important part of an application that uses Flask-Login is the
+<a class="reference internal" href="#flask.ext.login.LoginManager" title="flask.ext.login.LoginManager"><code class="xref py py-obj docutils literal"><span class="pre">LoginManager</span></code></a> class. You should create one for your application somewhere in
+your code, like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">login_manager</span> <span class="o">=</span> <span class="n">LoginManager</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The login manager contains the code that lets your application and Flask-Login
+work together, such as how to load a user from an ID, where to send users when
+they need to log in, and the like.</p>
+<p>Once the actual application object has been created, you can configure it for
+login with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">login_manager</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-it-works">
+<h2>How it Works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
+<p>You will need to provide a <a class="reference internal" href="#flask.ext.login.LoginManager.user_loader" title="flask.ext.login.LoginManager.user_loader"><code class="xref py py-obj docutils literal"><span class="pre">user_loader</span></code></a> callback. This callback
+is used to reload the user object from the user ID stored in the session. It
+should take the <a class="reference external" href="http://docs.python.org/library/functions.html#unicode" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">unicode</span></code></a> ID of a user, and return the corresponding user
+object. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@login_manager.user_loader</span>
+<span class="k">def</span> <span class="nf">load_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">User</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It should return <a class="reference external" href="http://docs.python.org/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a> (<strong>not raise an exception</strong>) if the ID is not valid.
+(In that case, the ID will manually be removed from the session and processing
+will continue.)</p>
+</div>
+<div class="section" id="your-user-class">
+<h2>Your User Class<a class="headerlink" href="#your-user-class" title="Permalink to this headline">¶</a></h2>
+<p>The class that you use to represent users needs to implement these properties
+and methods:</p>
+<dl class="docutils">
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_authenticated</span></code></dt>
+<dd>Returns <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">True</span></code></a> if the user is authenticated, i.e. they have provided
+valid credentials. (Only authenticated users will fulfill the criteria
+of <a class="reference internal" href="#flask.ext.login.login_required" title="flask.ext.login.login_required"><code class="xref py py-obj docutils literal"><span class="pre">login_required</span></code></a>.)</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_active</span></code></dt>
+<dd>Returns <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">True</span></code></a> if this is an active user - in addition to being
+authenticated, they also have activated their account, not been suspended,
+or any condition your application has for rejecting an account. Inactive
+accounts may not log in (without being forced of course).</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_anonymous</span></code></dt>
+<dd>Returns <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">True</span></code></a> if this is an anonymous user. (Actual users should return
+<a class="reference external" href="http://docs.python.org/library/constants.html#False" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">False</span></code></a> instead.)</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">get_id()</span></code></dt>
+<dd>Returns a <a class="reference external" href="http://docs.python.org/library/functions.html#unicode" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">unicode</span></code></a> that uniquely identifies this user, and can be used
+to load the user from the <a class="reference internal" href="#flask.ext.login.LoginManager.user_loader" title="flask.ext.login.LoginManager.user_loader"><code class="xref py py-obj docutils literal"><span class="pre">user_loader</span></code></a> callback. Note
+that this <strong>must</strong> be a <a class="reference external" href="http://docs.python.org/library/functions.html#unicode" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">unicode</span></code></a> - if the ID is natively an <a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a> or some
+other type, you will need to convert it to <a class="reference external" href="http://docs.python.org/library/functions.html#unicode" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">unicode</span></code></a>.</dd>
+</dl>
+<p>To make implementing a user class easier, you can inherit from <a class="reference internal" href="#flask.ext.login.UserMixin" title="flask.ext.login.UserMixin"><code class="xref py py-obj docutils literal"><span class="pre">UserMixin</span></code></a>,
+which provides default implementations for all of these methods. (It’s not
+required, though.)</p>
+</div>
+<div class="section" id="login-example">
+<h2>Login Example<a class="headerlink" href="#login-example" title="Permalink to this headline">¶</a></h2>
+<p>Once a user has authenticated, you log them in with the <a class="reference internal" href="#flask.ext.login.login_user" title="flask.ext.login.login_user"><code class="xref py py-obj docutils literal"><span class="pre">login_user</span></code></a>
+function. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s">'/login'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">'GET'</span><span class="p">,</span> <span class="s">'POST'</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">login</span><span class="p">():</span>
+    <span class="c"># Here we use a class of some kind to represent and validate our</span>
+    <span class="c"># client-side form data. For example, WTForms is a library that will</span>
+    <span class="c"># handle this for us, and we use a custom LoginForm to validate.</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">LoginForm</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">validate_on_submit</span><span class="p">():</span>
+        <span class="c"># Login and validate the user.</span>
+        <span class="c"># user should be an instance of your `User` class</span>
+        <span class="n">login_user</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+
+        <span class="n">flask</span><span class="o">.</span><span class="n">flash</span><span class="p">(</span><span class="s">'Logged in successfully.'</span><span class="p">)</span>
+
+        <span class="nb">next</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'next'</span><span class="p">)</span>
+        <span class="c"># next_is_valid should check if the user has valid</span>
+        <span class="c"># permission to access the `next` url</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">next_is_valid</span><span class="p">(</span><span class="nb">next</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">flask</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">flask</span><span class="o">.</span><span class="n">redirect</span><span class="p">(</span><span class="nb">next</span> <span class="ow">or</span> <span class="n">flask</span><span class="o">.</span><span class="n">url_for</span><span class="p">(</span><span class="s">'index'</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">flask</span><span class="o">.</span><span class="n">render_template</span><span class="p">(</span><span class="s">'login.html'</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>Warning:</em> You MUST validate the value of the <a class="reference external" href="http://docs.python.org/library/functions.html#next" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">next</span></code></a> parameter. If you do not,
+your application will be vulnerable to open redirects.</p>
+<p>It’s that simple. You can then access the logged-in user with the
+<a class="reference internal" href="#flask.ext.login.current_user" title="flask.ext.login.current_user"><code class="xref py py-obj docutils literal"><span class="pre">current_user</span></code></a> proxy, which is available in every template:</p>
+<div class="highlight-python"><div class="highlight"><pre>{% if current_user.is_authenticated %}
+  Hi {{ current_user.name }}!
+{% endif %}
+</pre></div>
+</div>
+<p>Views that require your users to be logged in can be
+decorated with the <a class="reference internal" href="#flask.ext.login.login_required" title="flask.ext.login.login_required"><code class="xref py py-obj docutils literal"><span class="pre">login_required</span></code></a> decorator:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s">"/settings"</span><span class="p">)</span>
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">settings</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>When the user is ready to log out:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s">"/logout"</span><span class="p">)</span>
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">logout</span><span class="p">():</span>
+    <span class="n">logout_user</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">somewhere</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>They will be logged out, and any cookies for their session will be cleaned up.</p>
+</div>
+<div class="section" id="customizing-the-login-process">
+<h2>Customizing the Login Process<a class="headerlink" href="#customizing-the-login-process" title="Permalink to this headline">¶</a></h2>
+<p>By default, when a user attempts to access a <a class="reference internal" href="#flask.ext.login.login_required" title="flask.ext.login.login_required"><code class="xref py py-obj docutils literal"><span class="pre">login_required</span></code></a> view without
+being logged in, Flask-Login will flash a message and redirect them to the
+log in view. (If the login view is not set, it will abort with a 401 error.)</p>
+<p>The name of the log in view can be set as <a class="reference internal" href="#flask.ext.login.LoginManager.login_view" title="flask.ext.login.LoginManager.login_view"><code class="xref py py-obj docutils literal"><span class="pre">LoginManager.login_view</span></code></a>.
+For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">login_manager</span><span class="o">.</span><span class="n">login_view</span> <span class="o">=</span> <span class="s">"users.login"</span>
+</pre></div>
+</div>
+<p>The default message flashed is <code class="docutils literal"><span class="pre">Please</span> <span class="pre">log</span> <span class="pre">in</span> <span class="pre">to</span> <span class="pre">access</span> <span class="pre">this</span> <span class="pre">page.</span></code> To
+customize the message, set <a class="reference internal" href="#flask.ext.login.LoginManager.login_message" title="flask.ext.login.LoginManager.login_message"><code class="xref py py-obj docutils literal"><span class="pre">LoginManager.login_message</span></code></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">login_manager</span><span class="o">.</span><span class="n">login_message</span> <span class="o">=</span> <span class="s">u"Bonvolu ensaluti por uzi tiun paĝon."</span>
+</pre></div>
+</div>
+<p>To customize the message category, set <code class="xref py py-obj docutils literal"><span class="pre">LoginManager.login_message_category</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">login_manager</span><span class="o">.</span><span class="n">login_message_category</span> <span class="o">=</span> <span class="s">"info"</span>
+</pre></div>
+</div>
+<p>When the log in view is redirected to, it will have a <code class="docutils literal"><span class="pre">next</span></code> variable in the
+query string, which is the page that the user was trying to access.</p>
+<p>If you would like to customize the process further, decorate a function with
+<a class="reference internal" href="#flask.ext.login.LoginManager.unauthorized_handler" title="flask.ext.login.LoginManager.unauthorized_handler"><code class="xref py py-obj docutils literal"><span class="pre">LoginManager.unauthorized_handler</span></code></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@login_manager.unauthorized_handler</span>
+<span class="k">def</span> <span class="nf">unauthorized</span><span class="p">():</span>
+    <span class="c"># do stuff</span>
+    <span class="k">return</span> <span class="n">a_response</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="login-using-authorization-header">
+<h2>Login using Authorization header<a class="headerlink" href="#login-using-authorization-header" title="Permalink to this headline">¶</a></h2>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">This method will be deprecated; use the <code class="xref py py-obj docutils literal"><span class="pre">request_loader</span></code>
+below instead.</p>
+</div>
+<p>Sometimes you want to support Basic Auth login using the <code class="xref py py-obj docutils literal"><span class="pre">Authorization</span></code>
+header, such as for api requests. To support login via header you will need
+to provide a <a class="reference internal" href="#flask.ext.login.LoginManager.header_loader" title="flask.ext.login.LoginManager.header_loader"><code class="xref py py-obj docutils literal"><span class="pre">header_loader</span></code></a> callback. This callback should behave
+the same as your <a class="reference internal" href="#flask.ext.login.LoginManager.user_loader" title="flask.ext.login.LoginManager.user_loader"><code class="xref py py-obj docutils literal"><span class="pre">user_loader</span></code></a> callback, except that it accepts
+a header value instead of a user id. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@login_manager.header_loader</span>
+<span class="k">def</span> <span class="nf">load_user_from_header</span><span class="p">(</span><span class="n">header_val</span><span class="p">):</span>
+    <span class="n">header_val</span> <span class="o">=</span> <span class="n">header_val</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'Basic '</span><span class="p">,</span> <span class="s">''</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">header_val</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">header_val</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">header_val</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>By default the <code class="xref py py-obj docutils literal"><span class="pre">Authorization</span></code> header’s value is passed to your
+<a class="reference internal" href="#flask.ext.login.LoginManager.header_loader" title="flask.ext.login.LoginManager.header_loader"><code class="xref py py-obj docutils literal"><span class="pre">header_loader</span></code></a> callback. You can change the header used with
+the <code class="xref py py-obj docutils literal"><span class="pre">AUTH_HEADER_NAME</span></code> configuration.</p>
+</div>
+<div class="section" id="custom-login-using-request-loader">
+<h2>Custom Login using Request Loader<a class="headerlink" href="#custom-login-using-request-loader" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes you want to login users without using cookies, such as using header
+values or an api key passed as a query argument. In these cases, you should use
+the <code class="xref py py-obj docutils literal"><span class="pre">request_loader</span></code> callback. This callback should behave the
+same as your <a class="reference internal" href="#flask.ext.login.LoginManager.user_loader" title="flask.ext.login.LoginManager.user_loader"><code class="xref py py-obj docutils literal"><span class="pre">user_loader</span></code></a> callback, except that it accepts the
+Flask request instead of a user_id.</p>
+<p>For example, to support login from both a url argument and from Basic Auth
+using the <code class="xref py py-obj docutils literal"><span class="pre">Authorization</span></code> header:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@login_manager.request_loader</span>
+<span class="k">def</span> <span class="nf">load_user_from_request</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+
+    <span class="c"># first, try to login using the api_key url arg</span>
+    <span class="n">api_key</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'api_key'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">api_key</span><span class="p">:</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">user</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">user</span>
+
+    <span class="c"># next, try to login using Basic Auth</span>
+    <span class="n">api_key</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'Authorization'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">api_key</span><span class="p">:</span>
+        <span class="n">api_key</span> <span class="o">=</span> <span class="n">api_key</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'Basic '</span><span class="p">,</span> <span class="s">''</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">api_key</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">api_key</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">user</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">user</span>
+
+    <span class="c"># finally, return None if both methods did not login the user</span>
+    <span class="k">return</span> <span class="bp">None</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="anonymous-users">
+<h2>Anonymous Users<a class="headerlink" href="#anonymous-users" title="Permalink to this headline">¶</a></h2>
+<p>By default, when a user is not actually logged in, <a class="reference internal" href="#flask.ext.login.current_user" title="flask.ext.login.current_user"><code class="xref py py-obj docutils literal"><span class="pre">current_user</span></code></a> is set to
+an <code class="xref py py-obj docutils literal"><span class="pre">AnonymousUserMixin</span></code> object. It has the following properties and methods:</p>
+<ul class="simple">
+<li><code class="xref py py-obj docutils literal"><span class="pre">is_active</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">is_authenticated</span></code> are <a class="reference external" href="http://docs.python.org/library/constants.html#False" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">False</span></code></a></li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">is_anonymous</span></code> is <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">True</span></code></a></li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">get_id()</span></code> returns <a class="reference external" href="http://docs.python.org/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></li>
+</ul>
+<p>If you have custom requirements for anonymous users (for example, they need
+to have a permissions field), you can provide a callable (either a class or
+factory function) that creates anonymous users to the <a class="reference internal" href="#flask.ext.login.LoginManager" title="flask.ext.login.LoginManager"><code class="xref py py-obj docutils literal"><span class="pre">LoginManager</span></code></a> with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">login_manager</span><span class="o">.</span><span class="n">anonymous_user</span> <span class="o">=</span> <span class="n">MyAnonymousUser</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="remember-me">
+<h2>Remember Me<a class="headerlink" href="#remember-me" title="Permalink to this headline">¶</a></h2>
+<p>“Remember Me” functionality can be tricky to implement. However, Flask-Login
+makes it nearly transparent - just pass <code class="docutils literal"><span class="pre">remember=True</span></code> to the <a class="reference internal" href="#flask.ext.login.login_user" title="flask.ext.login.login_user"><code class="xref py py-obj docutils literal"><span class="pre">login_user</span></code></a>
+call. A cookie will be saved on the user’s computer, and then Flask-Login
+will automatically restore the user ID from that cookie if it is not in the
+session. The cookie is tamper-proof, so if the user tampers with it (i.e.
+inserts someone else’s user ID in place of their own), the cookie will merely
+be rejected, as if it was not there.</p>
+<p>That level of functionality is handled automatically. However, you can (and
+should, if your application handles any kind of sensitive data) provide
+additional infrastructure to increase the security of your remember cookies.</p>
+<div class="section" id="alternative-tokens">
+<h3>Alternative Tokens<a class="headerlink" href="#alternative-tokens" title="Permalink to this headline">¶</a></h3>
+<p>Using the user ID as the value of the remember token is not necessarily
+secure. More secure is a hash of the username and password combined, or
+something similar. To add an alternative token, add a method to your user
+objects:</p>
+<dl class="docutils">
+<dt><code class="xref py py-obj docutils literal"><span class="pre">get_auth_token()</span></code></dt>
+<dd>Returns an authentication token (as <a class="reference external" href="http://docs.python.org/library/functions.html#unicode" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">unicode</span></code></a>) for the user. The auth
+token should uniquely identify the user, and preferably not be guessable
+by public information about the user such as their UID and name - nor
+should it expose such information.</dd>
+</dl>
+<p>Correspondingly, you should set a <a class="reference internal" href="#flask.ext.login.LoginManager.token_loader" title="flask.ext.login.LoginManager.token_loader"><code class="xref py py-obj docutils literal"><span class="pre">token_loader</span></code></a> function on the
+<a class="reference internal" href="#flask.ext.login.LoginManager" title="flask.ext.login.LoginManager"><code class="xref py py-obj docutils literal"><span class="pre">LoginManager</span></code></a>, which takes a token (as stored in the cookie) and returns the
+appropriate <code class="xref py py-obj docutils literal"><span class="pre">User</span></code> object.</p>
+<p>The <a class="reference internal" href="#flask.ext.login.make_secure_token" title="flask.ext.login.make_secure_token"><code class="xref py py-obj docutils literal"><span class="pre">make_secure_token</span></code></a> function is provided for creating auth tokens
+conveniently. It will concatenate all of its arguments, then HMAC it with
+the app’s secret key to ensure maximum cryptographic security. (If you store
+the user’s token in the database permanently, then you may wish to add random
+data to the token to further impede guessing.)</p>
+<p>If your application uses passwords to authenticate users, including the
+password (or the salted password hash you should be using) in the auth
+token will ensure that if a user changes their password, their old
+authentication tokens will cease to be valid.</p>
+</div>
+<div class="section" id="fresh-logins">
+<h3>Fresh Logins<a class="headerlink" href="#fresh-logins" title="Permalink to this headline">¶</a></h3>
+<p>When a user logs in, their session is marked as “fresh,” which indicates that
+they actually authenticated on that session. When their session is destroyed
+and they are logged back in with a “remember me” cookie, it is marked as
+“non-fresh.” <a class="reference internal" href="#flask.ext.login.login_required" title="flask.ext.login.login_required"><code class="xref py py-obj docutils literal"><span class="pre">login_required</span></code></a> does not differentiate between freshness, which
+is fine for most pages. However, sensitive actions like changing one’s
+personal information should require a fresh login. (Actions like changing
+one’s password should always require a password re-entry regardless.)</p>
+<p><a class="reference internal" href="#flask.ext.login.fresh_login_required" title="flask.ext.login.fresh_login_required"><code class="xref py py-obj docutils literal"><span class="pre">fresh_login_required</span></code></a>, in addition to verifying that the user is logged
+in, will also ensure that their login is fresh. If not, it will send them to
+a page where they can re-enter their credentials. You can customize its
+behavior in the same ways as you can customize <a class="reference internal" href="#flask.ext.login.login_required" title="flask.ext.login.login_required"><code class="xref py py-obj docutils literal"><span class="pre">login_required</span></code></a>, by setting
+<a class="reference internal" href="#flask.ext.login.LoginManager.refresh_view" title="flask.ext.login.LoginManager.refresh_view"><code class="xref py py-obj docutils literal"><span class="pre">LoginManager.refresh_view</span></code></a>, <a class="reference internal" href="#flask.ext.login.LoginManager.needs_refresh_message" title="flask.ext.login.LoginManager.needs_refresh_message"><code class="xref py py-obj docutils literal"><span class="pre">needs_refresh_message</span></code></a>, and
+<code class="xref py py-obj docutils literal"><span class="pre">needs_refresh_message_category</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">login_manager</span><span class="o">.</span><span class="n">refresh_view</span> <span class="o">=</span> <span class="s">"accounts.reauthenticate"</span>
+<span class="n">login_manager</span><span class="o">.</span><span class="n">needs_refresh_message</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">u"To protect your account, please reauthenticate to access this page."</span>
+<span class="p">)</span>
+<span class="n">login_manager</span><span class="o">.</span><span class="n">needs_refresh_message_category</span> <span class="o">=</span> <span class="s">"info"</span>
+</pre></div>
+</div>
+<p>Or by providing your own callback to handle refreshing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@login_manager.needs_refresh_handler</span>
+<span class="k">def</span> <span class="nf">refresh</span><span class="p">():</span>
+    <span class="c"># do stuff</span>
+    <span class="k">return</span> <span class="n">a_response</span>
+</pre></div>
+</div>
+<p>To mark a session as fresh again, call the <a class="reference internal" href="#flask.ext.login.confirm_login" title="flask.ext.login.confirm_login"><code class="xref py py-obj docutils literal"><span class="pre">confirm_login</span></code></a> function.</p>
+</div>
+<div class="section" id="cookie-settings">
+<h3>Cookie Settings<a class="headerlink" href="#cookie-settings" title="Permalink to this headline">¶</a></h3>
+<p>The details of the cookie can be customized in the application settings.</p>
+<div class="wy-table-responsive"><table class="docutils" border="1">
+<colgroup>
+<col width="35%">
+<col width="65%">
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">REMEMBER_COOKIE_NAME</span></code></td>
+<td>The name of the cookie to store the “remember me”
+information in. <strong>Default:</strong> <code class="docutils literal"><span class="pre">remember_token</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">REMEMBER_COOKIE_DURATION</span></code></td>
+<td>The amount of time before the cookie expires, as
+a <a class="reference external" href="http://docs.python.org/library/datetime.html#datetime.timedelta" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.timedelta</span></code></a> object.
+<strong>Default:</strong> 365 days (1 non-leap Gregorian year)</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">REMEMBER_COOKIE_DOMAIN</span></code></td>
+<td>If the “Remember Me” cookie should cross domains,
+set the domain value here (i.e. <code class="docutils literal"><span class="pre">.example.com</span></code>
+would allow the cookie to be used on all
+subdomains of <code class="docutils literal"><span class="pre">example.com</span></code>).
+<strong>Default:</strong> <a class="reference external" href="http://docs.python.org/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">REMEMBER_COOKIE_PATH</span></code></td>
+<td>Limits the “Remember Me” cookie to a certain path.
+<strong>Default:</strong> <code class="docutils literal"><span class="pre">/</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">REMEMBER_COOKIE_SECURE</span></code></td>
+<td>Restricts the “Remember Me” cookie’s scope to
+secure channels (typically HTTPS).
+<strong>Default:</strong> <a class="reference external" href="http://docs.python.org/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">REMEMBER_COOKIE_HTTPONLY</span></code></td>
+<td>Prevents the “Remember Me” cookie from being
+accessed by client-side scripts.
+<strong>Default:</strong> <a class="reference external" href="http://docs.python.org/library/constants.html#False" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">False</span></code></a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="section" id="session-protection">
+<h2>Session Protection<a class="headerlink" href="#session-protection" title="Permalink to this headline">¶</a></h2>
+<p>While the features above help secure your “Remember Me” token from cookie
+thieves, the session cookie is still vulnerable. Flask-Login includes session
+protection to help prevent your users’ sessions from being stolen.</p>
+<p>You can configure session protection on the <a class="reference internal" href="#flask.ext.login.LoginManager" title="flask.ext.login.LoginManager"><code class="xref py py-obj docutils literal"><span class="pre">LoginManager</span></code></a>, and in the app’s
+configuration. If it is enabled, it can operate in either <code class="xref py py-obj docutils literal"><span class="pre">basic</span></code> or <code class="xref py py-obj docutils literal"><span class="pre">strong</span></code>
+mode. To set it on the <a class="reference internal" href="#flask.ext.login.LoginManager" title="flask.ext.login.LoginManager"><code class="xref py py-obj docutils literal"><span class="pre">LoginManager</span></code></a>, set the
+<code class="xref py py-obj docutils literal"><span class="pre">session_protection</span></code> attribute to <code class="docutils literal"><span class="pre">"basic"</span></code> or <code class="docutils literal"><span class="pre">"strong"</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">login_manager</span><span class="o">.</span><span class="n">session_protection</span> <span class="o">=</span> <span class="s">"strong"</span>
+</pre></div>
+</div>
+<p>Or, to disable it:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">login_manager</span><span class="o">.</span><span class="n">session_protection</span> <span class="o">=</span> <span class="bp">None</span>
+</pre></div>
+</div>
+<p>By default, it is activated in <code class="docutils literal"><span class="pre">"basic"</span></code> mode. It can be disabled in the
+app’s configuration by setting the <code class="xref py py-obj docutils literal"><span class="pre">SESSION_PROTECTION</span></code> setting to <a class="reference external" href="http://docs.python.org/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a>,
+<code class="docutils literal"><span class="pre">"basic"</span></code>, or <code class="docutils literal"><span class="pre">"strong"</span></code>.</p>
+<p>When session protection is active, each request, it generates an identifier
+for the user’s computer (basically, a secure hash of the IP address and user
+agent). If the session does not have an associated identifier, the one
+generated will be stored. If it has an identifier, and it matches the one
+generated, then the request is OK.</p>
+<p>If the identifiers do not match in <code class="xref py py-obj docutils literal"><span class="pre">basic</span></code> mode, or when the session is
+permanent, then the session will simply be marked as non-fresh, and anything
+requiring a fresh login will force the user to re-authenticate. (Of course,
+you must be already using fresh logins where appropriate for this to have an
+effect.)</p>
+<p>If the identifiers do not match in <code class="xref py py-obj docutils literal"><span class="pre">strong</span></code> mode for a non-permanent session,
+then the entire session (as well as the remember token if it exists) is
+deleted.</p>
+</div>
+<div class="section" id="localization">
+<h2>Localization<a class="headerlink" href="#localization" title="Permalink to this headline">¶</a></h2>
+<p>By default, the <a class="reference internal" href="#flask.ext.login.LoginManager" title="flask.ext.login.LoginManager"><code class="xref py py-obj docutils literal"><span class="pre">LoginManager</span></code></a> uses <code class="docutils literal"><span class="pre">flash</span></code> to display messages when a user
+is required to log in. These messages are in English. If you require
+localization, set the <code class="xref py py-obj docutils literal"><span class="pre">localize_callback</span></code> attribute of <a class="reference internal" href="#flask.ext.login.LoginManager" title="flask.ext.login.LoginManager"><code class="xref py py-obj docutils literal"><span class="pre">LoginManager</span></code></a> to a
+function to be called with these messages before they’re sent to <code class="docutils literal"><span class="pre">flash</span></code>,
+e.g. <code class="docutils literal"><span class="pre">gettext</span></code>. This function will be called with the message and its return
+value will be sent to <code class="docutils literal"><span class="pre">flash</span></code> instead.</p>
+</div>
+<div class="section" id="api-documentation">
+<h2>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h2>
+<p>This documentation is automatically generated from Flask-Login’s source code.</p>
+<div class="section" id="configuring-login">
+<h3>Configuring Login<a class="headerlink" href="#configuring-login" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="flask.ext.login.LoginManager">
+<em class="property">class </em><code class="descclassname">flask.ext.login.</code><code class="descname">LoginManager</code><span class="sig-paren">(</span><em>app=None</em>, <em>add_context_processor=True</em><span class="sig-paren">)</span><a class="reference internal" href="https://flask-login.readthedocs.org/en/latest/_modules/flask_login.html#LoginManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask.ext.login.LoginManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>This object is used to hold the settings used for logging in. Instances of
+<a class="reference internal" href="#flask.ext.login.LoginManager" title="flask.ext.login.LoginManager"><code class="xref py py-class docutils literal"><span class="pre">LoginManager</span></code></a> are <em>not</em> bound to specific apps, so you can create
+one in the main body of your code and then bind it to your
+app in a factory function.</p>
+<dl class="method">
+<dt id="flask.ext.login.LoginManager.setup_app">
+<code class="descname">setup_app</code><span class="sig-paren">(</span><em>app</em>, <em>add_context_processor=True</em><span class="sig-paren">)</span><a class="reference internal" href="https://flask-login.readthedocs.org/en/latest/_modules/flask_login.html#LoginManager.setup_app"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask.ext.login.LoginManager.setup_app" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method has been deprecated. Please use
+<code class="xref py py-meth docutils literal"><span class="pre">LoginManager.init_app()</span></code> instead.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="flask.ext.login.LoginManager.unauthorized">
+<code class="descname">unauthorized</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="https://flask-login.readthedocs.org/en/latest/_modules/flask_login.html#LoginManager.unauthorized"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask.ext.login.LoginManager.unauthorized" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is called when the user is required to log in. If you register a
+callback with <a class="reference internal" href="#flask.ext.login.LoginManager.unauthorized_handler" title="flask.ext.login.LoginManager.unauthorized_handler"><code class="xref py py-meth docutils literal"><span class="pre">LoginManager.unauthorized_handler()</span></code></a>, then it will
+be called. Otherwise, it will take the following actions:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Flash <a class="reference internal" href="#flask.ext.login.LoginManager.login_message" title="flask.ext.login.LoginManager.login_message"><code class="xref py py-attr docutils literal"><span class="pre">LoginManager.login_message</span></code></a> to the user.</li>
+<li>If the app is using blueprints find the login view for
+the current blueprint using <code class="xref py py-obj docutils literal"><span class="pre">blueprint_login_views</span></code>. If the app
+is not using blueprints or the login view for the current
+blueprint is not specified use the value of <a class="reference internal" href="#flask.ext.login.LoginManager.login_view" title="flask.ext.login.LoginManager.login_view"><code class="xref py py-obj docutils literal"><span class="pre">login_view</span></code></a>.
+Redirect the user to the login view. (The page they were
+attempting to access will be passed in the <code class="docutils literal"><span class="pre">next</span></code> query
+string variable, so you can redirect there if present instead
+of the homepage.)</li>
+</ul>
+</div></blockquote>
+<p>If <a class="reference internal" href="#flask.ext.login.LoginManager.login_view" title="flask.ext.login.LoginManager.login_view"><code class="xref py py-attr docutils literal"><span class="pre">LoginManager.login_view</span></code></a> is not defined, then it will simply
+raise a HTTP 401 (Unauthorized) error instead.</p>
+<p>This should be returned from a view or before/after_request function,
+otherwise the redirect will have no effect.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="flask.ext.login.LoginManager.needs_refresh">
+<code class="descname">needs_refresh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="https://flask-login.readthedocs.org/en/latest/_modules/flask_login.html#LoginManager.needs_refresh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask.ext.login.LoginManager.needs_refresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is called when the user is logged in, but they need to be
+reauthenticated because their session is stale. If you register a
+callback with <a class="reference internal" href="#flask.ext.login.LoginManager.needs_refresh_handler" title="flask.ext.login.LoginManager.needs_refresh_handler"><code class="xref py py-obj docutils literal"><span class="pre">needs_refresh_handler</span></code></a>, then it will be called.
+Otherwise, it will take the following actions:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Flash <a class="reference internal" href="#flask.ext.login.LoginManager.needs_refresh_message" title="flask.ext.login.LoginManager.needs_refresh_message"><code class="xref py py-attr docutils literal"><span class="pre">LoginManager.needs_refresh_message</span></code></a> to the user.</li>
+<li>Redirect the user to <a class="reference internal" href="#flask.ext.login.LoginManager.refresh_view" title="flask.ext.login.LoginManager.refresh_view"><code class="xref py py-attr docutils literal"><span class="pre">LoginManager.refresh_view</span></code></a>. (The page
+they were attempting to access will be passed in the <code class="docutils literal"><span class="pre">next</span></code>
+query string variable, so you can redirect there if present
+instead of the homepage.)</li>
+</ul>
+</div></blockquote>
+<p>If <a class="reference internal" href="#flask.ext.login.LoginManager.refresh_view" title="flask.ext.login.LoginManager.refresh_view"><code class="xref py py-attr docutils literal"><span class="pre">LoginManager.refresh_view</span></code></a> is not defined, then it will
+simply raise a HTTP 401 (Unauthorized) error instead.</p>
+<p>This should be returned from a view or before/after_request function,
+otherwise the redirect will have no effect.</p>
+</dd></dl>
+
+<p class="rubric">General Configuration</p>
+<dl class="method">
+<dt id="flask.ext.login.LoginManager.user_loader">
+<code class="descname">user_loader</code><span class="sig-paren">(</span><em>callback</em><span class="sig-paren">)</span><a class="reference internal" href="https://flask-login.readthedocs.org/en/latest/_modules/flask_login.html#LoginManager.user_loader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask.ext.login.LoginManager.user_loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>This sets the callback for reloading a user from the session. The
+function you set should take a user ID (a <code class="docutils literal"><span class="pre">unicode</span></code>) and return a
+user object, or <code class="docutils literal"><span class="pre">None</span></code> if the user does not exist.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>callback</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#callable" title="(in Python v2.7)"><em>callable</em></a>) – The callback for retrieving a user object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="flask.ext.login.LoginManager.header_loader">
+<code class="descname">header_loader</code><span class="sig-paren">(</span><em>callback</em><span class="sig-paren">)</span><a class="reference internal" href="https://flask-login.readthedocs.org/en/latest/_modules/flask_login.html#LoginManager.header_loader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask.ext.login.LoginManager.header_loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>This sets the callback for loading a user from a header value.
+The function you set should take an authentication token and
+return a user object, or <a class="reference external" href="http://docs.python.org/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a> if the user does not exist.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>callback</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#callable" title="(in Python v2.7)"><em>callable</em></a>) – The callback for retrieving a user object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="flask.ext.login.LoginManager.token_loader">
+<code class="descname">token_loader</code><span class="sig-paren">(</span><em>callback</em><span class="sig-paren">)</span><a class="reference internal" href="https://flask-login.readthedocs.org/en/latest/_modules/flask_login.html#LoginManager.token_loader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask.ext.login.LoginManager.token_loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>This sets the callback for loading a user from an authentication
+token. The function you set should take an authentication token
+(a <code class="docutils literal"><span class="pre">unicode</span></code>, as returned by a user’s <code class="xref py py-obj docutils literal"><span class="pre">get_auth_token</span></code> method) and
+return a user object, or <code class="docutils literal"><span class="pre">None</span></code> if the user does not exist.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>callback</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#callable" title="(in Python v2.7)"><em>callable</em></a>) – The callback for retrieving a user object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="flask.ext.login.LoginManager.anonymous_user">
+<code class="descname">anonymous_user</code><a class="headerlink" href="#flask.ext.login.LoginManager.anonymous_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class or factory function that produces an anonymous user, which
+is used when no one is logged in.</p>
+</dd></dl>
+
+<p class="rubric"><a class="reference internal" href="#flask.ext.login.LoginManager.unauthorized" title="flask.ext.login.LoginManager.unauthorized"><code class="xref py py-obj docutils literal"><span class="pre">unauthorized</span></code></a> Configuration</p>
+<dl class="attribute">
+<dt id="flask.ext.login.LoginManager.login_view">
+<code class="descname">login_view</code><a class="headerlink" href="#flask.ext.login.LoginManager.login_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the view to redirect to when the user needs to log in. (This
+can be an absolute URL as well, if your authentication machinery is
+external to your application.)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="flask.ext.login.LoginManager.login_message">
+<code class="descname">login_message</code><a class="headerlink" href="#flask.ext.login.LoginManager.login_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>The message to flash when a user is redirected to the login page.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="flask.ext.login.LoginManager.unauthorized_handler">
+<code class="descname">unauthorized_handler</code><span class="sig-paren">(</span><em>callback</em><span class="sig-paren">)</span><a class="reference internal" href="https://flask-login.readthedocs.org/en/latest/_modules/flask_login.html#LoginManager.unauthorized_handler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask.ext.login.LoginManager.unauthorized_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>This will set the callback for the <a class="reference internal" href="#flask.ext.login.LoginManager.unauthorized" title="flask.ext.login.LoginManager.unauthorized"><code class="xref py py-obj docutils literal"><span class="pre">unauthorized</span></code></a> method, which among
+other things is used by <a class="reference internal" href="#flask.ext.login.login_required" title="flask.ext.login.login_required"><code class="xref py py-obj docutils literal"><span class="pre">login_required</span></code></a>. It takes no arguments, and
+should return a response to be sent to the user instead of their
+normal view.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>callback</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#callable" title="(in Python v2.7)"><em>callable</em></a>) – The callback for unauthorized users.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p class="rubric"><a class="reference internal" href="#flask.ext.login.LoginManager.needs_refresh" title="flask.ext.login.LoginManager.needs_refresh"><code class="xref py py-obj docutils literal"><span class="pre">needs_refresh</span></code></a> Configuration</p>
+<dl class="attribute">
+<dt id="flask.ext.login.LoginManager.refresh_view">
+<code class="descname">refresh_view</code><a class="headerlink" href="#flask.ext.login.LoginManager.refresh_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the view to redirect to when the user needs to
+reauthenticate.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="flask.ext.login.LoginManager.needs_refresh_message">
+<code class="descname">needs_refresh_message</code><a class="headerlink" href="#flask.ext.login.LoginManager.needs_refresh_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>The message to flash when a user is redirected to the reauthentication
+page.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="flask.ext.login.LoginManager.needs_refresh_handler">
+<code class="descname">needs_refresh_handler</code><span class="sig-paren">(</span><em>callback</em><span class="sig-paren">)</span><a class="reference internal" href="https://flask-login.readthedocs.org/en/latest/_modules/flask_login.html#LoginManager.needs_refresh_handler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask.ext.login.LoginManager.needs_refresh_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>This will set the callback for the <a class="reference internal" href="#flask.ext.login.LoginManager.needs_refresh" title="flask.ext.login.LoginManager.needs_refresh"><code class="xref py py-obj docutils literal"><span class="pre">needs_refresh</span></code></a> method, which among
+other things is used by <a class="reference internal" href="#flask.ext.login.fresh_login_required" title="flask.ext.login.fresh_login_required"><code class="xref py py-obj docutils literal"><span class="pre">fresh_login_required</span></code></a>. It takes no arguments,
+and should return a response to be sent to the user instead of their
+normal view.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>callback</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#callable" title="(in Python v2.7)"><em>callable</em></a>) – The callback for unauthorized users.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="login-mechanisms">
+<h3>Login Mechanisms<a class="headerlink" href="#login-mechanisms" title="Permalink to this headline">¶</a></h3>
+<dl class="data">
+<dt id="flask.ext.login.current_user">
+<code class="descclassname">flask.ext.login.</code><code class="descname">current_user</code><a class="headerlink" href="#flask.ext.login.current_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>A proxy for the current user.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="flask.ext.login.login_fresh">
+<code class="descclassname">flask.ext.login.</code><code class="descname">login_fresh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="https://flask-login.readthedocs.org/en/latest/_modules/flask_login.html#login_fresh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask.ext.login.login_fresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>This returns <code class="docutils literal"><span class="pre">True</span></code> if the current login is fresh.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="flask.ext.login.login_user">
+<code class="descclassname">flask.ext.login.</code><code class="descname">login_user</code><span class="sig-paren">(</span><em>user</em>, <em>remember=False</em>, <em>force=False</em>, <em>fresh=True</em><span class="sig-paren">)</span><a class="reference internal" href="https://flask-login.readthedocs.org/en/latest/_modules/flask_login.html#login_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask.ext.login.login_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a user in. You should pass the actual user object to this. If the
+user’s <code class="xref py py-obj docutils literal"><span class="pre">is_active</span></code> property is <code class="docutils literal"><span class="pre">False</span></code>, they will not be logged in
+unless <code class="xref py py-obj docutils literal"><span class="pre">force</span></code> is <code class="docutils literal"><span class="pre">True</span></code>.</p>
+<p>This will return <code class="docutils literal"><span class="pre">True</span></code> if the log in attempt succeeds, and <code class="docutils literal"><span class="pre">False</span></code> if
+it fails (i.e. because the user is inactive).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>user</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><em>object</em></a>) – The user object to log in.</li>
+<li><strong>remember</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Whether to remember the user after their session expires.
+Defaults to <code class="docutils literal"><span class="pre">False</span></code>.</li>
+<li><strong>force</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – If the user is inactive, setting this to <code class="docutils literal"><span class="pre">True</span></code> will log
+them in regardless. Defaults to <code class="docutils literal"><span class="pre">False</span></code>.</li>
+<li><strong>fresh</strong> – setting this to <code class="docutils literal"><span class="pre">False</span></code> will log in the user with a session</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>marked as not “fresh”. Defaults to <code class="docutils literal"><span class="pre">True</span></code>.
+:type fresh: bool</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="flask.ext.login.logout_user">
+<code class="descclassname">flask.ext.login.</code><code class="descname">logout_user</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="https://flask-login.readthedocs.org/en/latest/_modules/flask_login.html#logout_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask.ext.login.logout_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a user out. (You do not need to pass the actual user.) This will
+also clean up the remember me cookie if it exists.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="flask.ext.login.confirm_login">
+<code class="descclassname">flask.ext.login.</code><code class="descname">confirm_login</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="https://flask-login.readthedocs.org/en/latest/_modules/flask_login.html#confirm_login"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask.ext.login.confirm_login" title="Permalink to this definition">¶</a></dt>
+<dd><p>This sets the current session as fresh. Sessions become stale when they
+are reloaded from a cookie.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="protecting-views">
+<h3>Protecting Views<a class="headerlink" href="#protecting-views" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="flask.ext.login.login_required">
+<code class="descclassname">flask.ext.login.</code><code class="descname">login_required</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="reference internal" href="https://flask-login.readthedocs.org/en/latest/_modules/flask_login.html#login_required"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask.ext.login.login_required" title="Permalink to this definition">¶</a></dt>
+<dd><p>If you decorate a view with this, it will ensure that the current user is
+logged in and authenticated before calling the actual view. (If they are
+not, it calls the <a class="reference internal" href="#flask.ext.login.LoginManager.unauthorized" title="flask.ext.login.LoginManager.unauthorized"><code class="xref py py-attr docutils literal"><span class="pre">LoginManager.unauthorized</span></code></a> callback.) For
+example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s">'/post'</span><span class="p">)</span>
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">post</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>If there are only certain times you need to require that your user is
+logged in, you can do so with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="ow">not</span> <span class="n">current_user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">current_app</span><span class="o">.</span><span class="n">login_manager</span><span class="o">.</span><span class="n">unauthorized</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>...which is essentially the code that this function adds to your views.</p>
+<p>It can be convenient to globally turn off authentication when unit testing.
+To enable this, if the application configuration variable <code class="xref py py-obj docutils literal"><span class="pre">LOGIN_DISABLED</span></code>
+is set to <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">True</span></code></a>, this decorator will be ignored.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Per <a class="reference external" href="http://www.w3.org/TR/cors/#cross-origin-request-with-preflight-0">W3 guidelines for CORS preflight requests</a>,
+HTTP <code class="docutils literal"><span class="pre">OPTIONS</span></code> requests are exempt from login checks.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>func</strong> (<em>function</em>) – The view function to decorate.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="flask.ext.login.fresh_login_required">
+<code class="descclassname">flask.ext.login.</code><code class="descname">fresh_login_required</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="reference internal" href="https://flask-login.readthedocs.org/en/latest/_modules/flask_login.html#fresh_login_required"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask.ext.login.fresh_login_required" title="Permalink to this definition">¶</a></dt>
+<dd><p>If you decorate a view with this, it will ensure that the current user’s
+login is fresh - i.e. their session was not restored from a ‘remember me’
+cookie. Sensitive operations, like changing a password or e-mail, should
+be protected with this, to impede the efforts of cookie thieves.</p>
+<p>If the user is not authenticated, <a class="reference internal" href="#flask.ext.login.LoginManager.unauthorized" title="flask.ext.login.LoginManager.unauthorized"><code class="xref py py-meth docutils literal"><span class="pre">LoginManager.unauthorized()</span></code></a> is
+called as normal. If they are authenticated, but their session is not
+fresh, it will call <a class="reference internal" href="#flask.ext.login.LoginManager.needs_refresh" title="flask.ext.login.LoginManager.needs_refresh"><code class="xref py py-meth docutils literal"><span class="pre">LoginManager.needs_refresh()</span></code></a> instead. (In that
+case, you will need to provide a <a class="reference internal" href="#flask.ext.login.LoginManager.refresh_view" title="flask.ext.login.LoginManager.refresh_view"><code class="xref py py-attr docutils literal"><span class="pre">LoginManager.refresh_view</span></code></a>.)</p>
+<p>Behaves identically to the <a class="reference internal" href="#flask.ext.login.login_required" title="flask.ext.login.login_required"><code class="xref py py-func docutils literal"><span class="pre">login_required()</span></code></a> decorator with respect
+to configutation variables.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Per <a class="reference external" href="http://www.w3.org/TR/cors/#cross-origin-request-with-preflight-0">W3 guidelines for CORS preflight requests</a>,
+HTTP <code class="docutils literal"><span class="pre">OPTIONS</span></code> requests are exempt from login checks.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>func</strong> (<em>function</em>) – The view function to decorate.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="user-object-helpers">
+<h3>User Object Helpers<a class="headerlink" href="#user-object-helpers" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="flask.ext.login.UserMixin">
+<em class="property">class </em><code class="descclassname">flask.ext.login.</code><code class="descname">UserMixin</code><a class="reference internal" href="https://flask-login.readthedocs.org/en/latest/_modules/flask_login.html#UserMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask.ext.login.UserMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>This provides default implementations for the methods that Flask-Login
+expects user objects to have.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="utilities">
+<h3>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="flask.ext.login.login_url">
+<code class="descclassname">flask.ext.login.</code><code class="descname">login_url</code><span class="sig-paren">(</span><em>login_view</em>, <em>next_url=None</em>, <em>next_field='next'</em><span class="sig-paren">)</span><a class="reference internal" href="https://flask-login.readthedocs.org/en/latest/_modules/flask_login.html#login_url"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask.ext.login.login_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a URL for redirecting to a login page. If only <code class="xref py py-obj docutils literal"><span class="pre">login_view</span></code> is
+provided, this will just return the URL for it. If <code class="xref py py-obj docutils literal"><span class="pre">next_url</span></code> is provided,
+however, this will append a <code class="docutils literal"><span class="pre">next=URL</span></code> parameter to the query string
+so that the login view can redirect back to that URL.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>login_view</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The name of the login view. (Alternately, the actual
+URL to the login view.)</li>
+<li><strong>next_url</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The URL to give the login view for redirection.</li>
+<li><strong>next_field</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – What field to store the next URL in. (It defaults to
+<code class="docutils literal"><span class="pre">next</span></code>.)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="flask.ext.login.make_secure_token">
+<code class="descclassname">flask.ext.login.</code><code class="descname">make_secure_token</code><span class="sig-paren">(</span><em>*args</em>, <em>**options</em><span class="sig-paren">)</span><a class="reference internal" href="https://flask-login.readthedocs.org/en/latest/_modules/flask_login.html#make_secure_token"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask.ext.login.make_secure_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>This will create a secure token that you can use as an authentication
+token for your users. It uses heavy-duty HMAC encryption to prevent people
+from guessing the information. (To make it even more effective, if you
+will never need to regenerate the token, you can  pass some random data
+as one of the arguments.)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>*args</strong> – The data to include in the token.</li>
+<li><strong>**options</strong> (<em>kwargs</em>) – To manually specify a secret key, pass <code class="docutils literal"><span class="pre">key=THE_KEY</span></code>.
+Otherwise, the <code class="docutils literal"><span class="pre">current_app</span></code> secret key will be used.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="signals">
+<h3>Signals<a class="headerlink" href="#signals" title="Permalink to this headline">¶</a></h3>
+<p>See the <a class="reference external" href="http://flask.pocoo.org/docs/signals/">Flask documentation on signals</a> for information on how to use these
+signals in your code.</p>
+<dl class="data">
+<dt id="flask.ext.login.user_logged_in">
+<code class="descclassname">flask.ext.login.</code><code class="descname">user_logged_in</code><a class="headerlink" href="#flask.ext.login.user_logged_in" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sent when a user is logged in. In addition to the app (which is the
+sender), it is passed <a class="reference external" href="http://docs.python.org/library/user.html#module-user" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">user</span></code></a>, which is the user being logged in.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="flask.ext.login.user_logged_out">
+<code class="descclassname">flask.ext.login.</code><code class="descname">user_logged_out</code><a class="headerlink" href="#flask.ext.login.user_logged_out" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sent when a user is logged out. In addition to the app (which is the
+sender), it is passed <a class="reference external" href="http://docs.python.org/library/user.html#module-user" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">user</span></code></a>, which is the user being logged out.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="flask.ext.login.user_login_confirmed">
+<code class="descclassname">flask.ext.login.</code><code class="descname">user_login_confirmed</code><a class="headerlink" href="#flask.ext.login.user_login_confirmed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sent when a user’s login is confirmed, marking it as fresh. (It is not
+called for a normal login.)
+It receives no additional arguments besides the app.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="flask.ext.login.user_unauthorized">
+<code class="descclassname">flask.ext.login.</code><code class="descname">user_unauthorized</code><a class="headerlink" href="#flask.ext.login.user_unauthorized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sent when the <code class="xref py py-obj docutils literal"><span class="pre">unauthorized</span></code> method is called on a <a class="reference internal" href="#flask.ext.login.LoginManager" title="flask.ext.login.LoginManager"><code class="xref py py-obj docutils literal"><span class="pre">LoginManager</span></code></a>. It
+receives no additional arguments besides the app.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="flask.ext.login.user_needs_refresh">
+<code class="descclassname">flask.ext.login.</code><code class="descname">user_needs_refresh</code><a class="headerlink" href="#flask.ext.login.user_needs_refresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sent when the <code class="xref py py-obj docutils literal"><span class="pre">needs_refresh</span></code> method is called on a <a class="reference internal" href="#flask.ext.login.LoginManager" title="flask.ext.login.LoginManager"><code class="xref py py-obj docutils literal"><span class="pre">LoginManager</span></code></a>. It
+receives no additional arguments besides the app.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="flask.ext.login.session_protected">
+<code class="descclassname">flask.ext.login.</code><code class="descname">session_protected</code><a class="headerlink" href="#flask.ext.login.session_protected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sent whenever session protection takes effect, and a session is either
+marked non-fresh or deleted. It receives no additional arguments besides
+the app.</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  
+    <a href="http://github.com/maxcountryman/flask-login"><img style="position: fixed; top: 0; right: 0; border: 0;" src="Flask-Login%20%E2%80%94%20Flask-Login%200.3.2%20documentation_files/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+  
+
+  
+  </div>
+  
+
+  
+<!-- Inserted RTD Footer -->
+<div class="injected">
+
+  
+  <div class="rst-versions rst-badge" data-toggle="rst-versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book">&nbsp;</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+
+      
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+         <strong> 
+        <dd><a href="http://flask-login.readthedocs.org/en/latest/">latest</a></dd>
+         </strong> 
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/stable/">stable</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/master/">master</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/0.3.2/">0.3.2</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/0.3.1/">0.3.1</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/0.3.0/">0.3.0</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/0.2.11/">0.2.11</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/0.2.10/">0.2.10</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/0.2.9/">0.2.9</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/0.2.8/">0.2.8</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/0.2.7/">0.2.7</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/0.2.6/">0.2.6</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/0.2.5/">0.2.5</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/0.2.4/">0.2.4</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/0.2.3/">0.2.3</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/0.2.2/">0.2.2</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/0.2.1/">0.2.1</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/0.2.0/">0.2.0</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/0.1.3/">0.1.3</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/0.1.2/">0.1.2</a></dd>
+        
+        
+        
+        <dd><a href="http://flask-login.readthedocs.org/en/0.1.1/">0.1.1</a></dd>
+        
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="https://readthedocs.org/projects/flask-login/downloads/pdf/latest/">PDF</a></dd>
+        
+        <dd><a href="https://readthedocs.org/projects/flask-login/downloads/htmlzip/latest/">HTML</a></dd>
+        
+        <dd><a href="https://readthedocs.org/projects/flask-login/downloads/epub/latest/">Epub</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="https://readthedocs.org/projects/flask-login/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/flask-login/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/flask-login/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/maxcountryman/flask-login/blob/master/docs/index.rst">View</a>
+        </dd>
+        <dd>
+          <a href="https://github.com/maxcountryman/flask-login/edit/master/docs/index.rst">Edit</a>
+        </dd>
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Search</dt>
+        <dd>
+          <div style="padding: 6px;">
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="https://readthedocs.org/projects/flask-login/search/" method="get">
+              <input name="q" placeholder="Search docs" type="text">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+
+
+      <hr>
+      
+      Free document hosting provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+      
+
+      
+    </div>
+  </div>
+  
+
+</div>
+</body></html>
