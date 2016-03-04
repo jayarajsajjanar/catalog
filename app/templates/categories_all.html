@@ -7,8 +7,13 @@
     {% endif %}
   </head>
   <body>
+      {% if not session.logged_in %}
+      <a href="/facebook_login">Login or Signup</a>
+      {% else %}
       {% for i in Items: %}
       <b> {% print i%} </b><br>
+      <a href="/logout">signout</a>
       {%endfor%}
+      {%endif%}
   </body>
 </html>
