@@ -1,7 +1,7 @@
 from flask import render_template
 from app import app
 
-from flask import Flask, abort, request,session,redirect,url_for
+from flask import Flask, abort, request,session,redirect,url_for,flash
 from uuid import uuid4
 import requests
 import requests.auth
@@ -32,6 +32,7 @@ def facebook_login():
     return facebook.authorize(callback=url_for('facebook_authorized',next=request.args.get('next'), _external=True))
 
 @app.route("/")
+@app.route("/index")
 def index():
     return "index!!!"
 
@@ -85,6 +86,7 @@ def pop_login_session():
 #Could not place this import statement at the top. 404 error occuring.
 from models import Items
 from models import Cat
+from models import db
 # # from run import make_authorization_url
 
 # @app.route('/')
@@ -99,9 +101,28 @@ def Categories():
 	items_py=[()]
 	for i in Items.query.all():
 		items_py.append((i.id,i.Naming,i.Description))
-	return render_template('categories_all.html',title='Categories_all',Items=items_py)
+	categs=[]
+	for i in Cat.query.all():
+		categs.append(i.name)
+	return render_template('categories_all.html',title='Categories_all',Items=items_py,categs=categs)
 
+from .forms import form_add_categ
 
+# index view function suppressed for brevity
+
+@app.route('/add_categ', methods=['GET', 'POST'])
+def add_categ():
+    form = form_add_categ()
+    if form.validate_on_submit():
+    	new_categ=str(form.categ_name.data)
+    	c1=Cat(new_categ)
+    	db.session.add(c1)
+    	db.session.commit()
+        # print ('New Category Added = {}').format(new_categ)
+        return  render_template('index.html',user=new_categ)
+    return render_template('add_categ.html', 
+                           title='Add Categories',
+                           form=form)
 
 # def make_authorization_url():
 #     # Generate a random string for the state parameter

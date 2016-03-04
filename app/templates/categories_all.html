@@ -10,10 +10,15 @@
       {% if not session.logged_in %}
       <a href="/facebook_login">Login or Signup</a>
       {% else %}
+      <ul>
       {% for i in Items: %}
-      <b> {% print i%} </b><br>
-      <a href="/logout">signout</a>
+      <li><b> {% print i%} </b><br></li>
       {%endfor%}
+      </ul>
+      {% for i in categs: %}
+      <li><b> {% print (i)%} </b><br></li>
+      {%endfor%}
+      <a href="/logout">signout</a>
       {%endif%}
   </body>
 </html>
