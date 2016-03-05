@@ -1,6 +1,8 @@
 from models import *
 
-# db.create_all()
+
+db.drop_all()
+db.create_all()
 c1=Cat("hockey")
 i1=Items("Hockey Stick","Its made of wood, curved at the end. Rubber grip for better control",c1)
 i2=Items("Hockey Ball","Usually white in color. Very hard.",c1)

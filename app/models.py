@@ -11,11 +11,11 @@ class Items(db.Model):
 	Description = db.Column(db.String)
 	Cat_id = db.Column(db.Integer, db.ForeignKey('Cat.id'))
 	Cat= db.relationship('Cat',
-		backref=db.backref('category_items', lazy='dynamic'))
+		backref=db.backref('its_items', lazy='dynamic'))
 	def __init__(self, Naming, Description,Categoriess):
 		self.Naming = Naming
 		self.Description = Description
-		self.Categoriess=Categoriess
+		self.Cat=Categoriess
 
 
 class Cat(db.Model):

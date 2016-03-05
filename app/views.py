@@ -98,12 +98,15 @@ from models import db
 @app.route('/categories_all')
 # @login_required
 def Categories():
-	items_py=[()]
+	items_py=[]
 	for i in Items.query.all():
-		items_py.append((i.id,i.Naming,i.Description))
+		items_py.append((str(i.id),str(i.Naming),str(i.Description),str(i.Cat.name)))
+       # items_py=[]
+    # for i in Items.query.all():
+    #     items_py.append(i)
 	categs=[]
 	for i in Cat.query.all():
-		categs.append(i.name)
+		categs.append((str(i.id),str(i.name)))
 	return render_template('categories_all.html',title='Categories_all',Items=items_py,categs=categs)
 
 from .forms import form_add_categ
