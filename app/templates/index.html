@@ -1,12 +1,79 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    {% if title %}
-    <title>{{ title }} - microblog</title>
-    {% else %}
-    <title>Welcome to microblog</title>
-    {% endif %}
-  </head>
-  <body>
-     <a href="/categories_all"> <h1>You added: {{ user}}!</h1></a>
-  </body>
+<head>
+<style>
+#header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:100;
+    width:100px;
+    float:left;
+    padding:5px;
+
+}
+#section {
+    width:350px;
+    float:left;
+    padding:10px;    
+    height:100;
+}
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+   padding:5px;    
+}
+#login {
+    text-align:center;
+    background-color:white;
+    position: absolute;
+    bottom: 600px;
+    right: 10px;
+    width: 100px;
+    border: 3px solid #73AD21;    
+
+}
+</style>
+</head>
+<body>
+
+<div id="header">
+<h1>Items Catalog</h1>
+{% if not session.logged_in %}
+<div id="login">
+<a href="/facebook_login">Login</a>
+</div>
+{% else %}
+<div id="login">
+<a href="/logout">Logout</a>
+</div>
+{%endif%}
+</div>
+
+
+<div id="nav">
+{% for i in categs: %}
+<b> {% print (i[1])%} </b><br>
+{%endfor%}
+</div>
+
+<div id="section">
+<h2>Tennis</h2>
+<p>Tennis is a racket sport that can be played individually against a single opponent (singles) or between two teams of two players each (doubles). Each player uses a tennis racket that is strung with cord to strike a hollow rubber ball covered with felt over or around a net and into the opponent's court. The object of the game is to play the ball in such a way that the opponent is not able to play a valid return. The player who is unable to return the ball will not gain a point, while the opposite player will.
+
+Tennis is an Olympic sport and is played at all levels of society and at all ages. The sport can be played by anyone who can hold a racket, including wheelchair users. The modern game of tennis originated in Birmingham, England, in the late 19th century as "lawn tennis".[1] It had close connections both to various field ("lawn") games such as croquet and bowls as well as to the older racket sport of real tennis. During most of the 19th-century in fact, the term "tennis" referred to real tennis, not lawn tennis: for example, in Disraeli's novel Sybil (1845), Lord Eugene De Vere announces that he will "go down to Hampton Court and play tennis."[2]</p>
+</div>
+
+<div id="footer">
+Copyright © W3Schools.com
+</div>
+
+</body>
 </html>

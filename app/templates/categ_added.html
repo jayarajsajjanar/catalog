@@ -1,0 +1,10 @@
+{% with messages1 = get_flashed_messages() %}
+        {% if messages1 %}
+          <ul class=flashes>
+          {% for message in messages1 %}
+            <li>{{ message }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+<p> New Category Added!!!!</p>

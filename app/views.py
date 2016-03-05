@@ -31,10 +31,19 @@ def get_facebook_token():
 def facebook_login():
     return facebook.authorize(callback=url_for('facebook_authorized',next=request.args.get('next'), _external=True))
 
-@app.route("/")
-@app.route("/index")
+@app.route('/')
+@app.route('/index')
 def index():
-    return "index!!!"
+    items_py=[]
+    for i in Items.query.all():
+        items_py.append((str(i.id),str(i.Naming),str(i.Description),str(i.Cat.name)))
+       # items_py=[]
+    # for i in Items.query.all():
+    #     items_py.append(i)
+    categs=[]
+    for i in Cat.query.all():
+        categs.append((str(i.id),str(i.name)))
+    return render_template('index.html',title='index',Items=items_py,categs=categs)
 
 @app.route("/facebook_authorized")
 @facebook.authorized_handler
@@ -122,7 +131,9 @@ def add_categ():
     	db.session.add(c1)
     	db.session.commit()
         # print ('New Category Added = {}').format(new_categ)
-        return  render_template('index.html',user=new_categ)
+        flash('Category addedddd:',c1.name)
+        return render_template('categ_added.html',title='Categ_added')
+        # return  render_template('index.html',user=new_categ)
     return render_template('add_categ.html', 
                            title='Add Categories',
                            form=form)
