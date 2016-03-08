@@ -1,0 +1,14 @@
+<h1>Add New Item: </h1>
+  <form action="" method="post" name="add_item_form_html">
+      {{ form.hidden_tag() }}
+      <p>
+          Please enter Item Name:<br>
+          {{ form.item_name(size=80) }}<br>
+          Please enter Item Description:<br>
+          {{ form.item_desc(size=80) }}<br>
+          Please enter Item Category:<br>
+          {{ form.item_categ }}<br>
+      </p>
+      
+      <p><input type="submit" value="Add"></p>
+  </form>

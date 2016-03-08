@@ -118,11 +118,28 @@ def Categories():
 		categs.append((str(i.id),str(i.name)))
 	return render_template('categories_all.html',title='Categories_all',Items=items_py,categs=categs)
 
-from .forms import form_add_categ
+@app.route('/all_items_in_categ.html')
+# @login_required
+def all_items_in_Categories():
+
+    ii = request.args.get('i')
+    items_py=[]
+    for i in Items.query.all():
+        items_py.append((str(i.id),str(i.Naming),str(i.Description),str(i.Cat.name)))
+       # items_py=[]
+    # for i in Items.query.all():
+    #     items_py.append(i)
+    categs=[]
+    for i in Cat.query.all():
+        categs.append((str(i.id),str(i.name)))
+    return render_template('all_items_in_categ.html',title='All_Items_In_Categories',Items=items_py,categs=categs,ii=ii)
+    # return ii
+
+from .forms import form_add_categ,form_add_item,form_edit_item
 
 # index view function suppressed for brevity
 
-@app.route('/add_categ', methods=['GET', 'POST'])
+@app.route('/add_categ.html', methods=['GET', 'POST'])
 def add_categ():
     form = form_add_categ()
     if form.validate_on_submit():
@@ -138,6 +155,88 @@ def add_categ():
                            title='Add Categories',
                            form=form)
 
+@app.route('/add_item.html', methods=['GET', 'POST'])
+def add_item():
+    form = form_add_item()
+    if form.validate_on_submit():
+        item_name=str(form.item_name.data)
+        item_desc=str(form.item_desc.data)
+        item_categ=str(form.item_categ.data)
+        
+        for c in Cat.query.all():
+            if int(c.id) == int(item_categ):
+                categ_is = c
+                break
+        i1=Items(item_name,item_desc,categ_is)
+        db.session.add(i1)
+        db.session.commit()
+        # print ('New Category Added = {}').format(new_categ)
+        flash('Category addedddd:',i1.Naming)
+        return render_template('item_added.html',title='Item_added')
+
+        # return render_template('item_added.html', 
+        #                    title='Item Added',
+        #                    item_name=item_name,
+        #                    item_desc=item_desc,
+        #                    item_categ=item_categ,
+        #                    categ_id=categ)
+        
+
+    return render_template('add_item.html', 
+                           title='Add Item',
+                           form=form)
+
+@app.route('/delete_item.html', methods=['GET', 'POST'])
+def delete_item():
+    ii = request.args.get('i')
+    for i in Items.query.all():
+        if int(i.id)==int(ii):
+            item_is = i
+            deleted_item_name = i.Naming
+            break
+    db.session.delete(item_is)
+    db.session.commit()
+
+    return "Deleted : %s" %deleted_item_name
+
+
+@app.route('/edit_item.html', methods=['GET', 'POST'])
+def edit_item():
+    form = form_edit_item()
+    ii = request.args.get('i')
+    for i in Items.query.all():
+        if int(i.id)==int(ii):
+            item_is = i
+            edit_item_is = i
+            edit_item_id_is = i.id
+            break
+    form.item_name.value=edit_item_is.Naming
+
+    if form.validate_on_submit():
+        item_name=str(form.item_name.data)
+        item_desc=str(form.item_desc.data)
+
+        ret=Items.query.filter_by(id=edit_item_id_is).first()
+        ret.Naming=item_name
+        ret.Description=item_desc
+
+        db.session.commit()
+        # print ('New Category Added = {}').format(new_categ)
+        message="Item Modified, New Item Name:"+item_name
+        flash(message)
+        return render_template('item_edited.html',title='Item_Edited')
+
+        # return render_template('item_added.html', 
+        #                    title='Item Added',
+        #                    item_name=item_name,
+        #                    item_desc=item_desc,
+        #                    item_categ=item_categ,
+        #                    categ_id=categ)
+        
+
+    return render_template('edit_item.html', 
+                           title='Edit Item',
+                           form=form,edit_item_is=edit_item_is)
 # def make_authorization_url():
 #     # Generate a random string for the state parameter
 #     # Save it for use later to prevent xsrf attacks

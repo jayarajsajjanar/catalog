@@ -1,0 +1,12 @@
+{% with messages3 = get_flashed_messages() %}
+        {% if messages3 %}
+          <ul class=flashes>
+          {% for message in messages3 %}
+            <h2><li>{{ message }}</li></h2>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+<h2> Item Modified Successfully!!!!</p></h2>
+
+<h2><a href="index">Return to Index</a></h2>

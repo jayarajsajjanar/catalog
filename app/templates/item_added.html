@@ -1,0 +1,14 @@
+{% with messages2 = get_flashed_messages() %}
+        {% if messages2 %}
+          <ul class=flashes>
+          {% for message in messages2 %}
+            <li>{{ message }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+<p> New Item Added!!!!</p>
+<p>{% print item_name%} <br>
+{% print item_desc%}<br>
+{% print item_categ%}
+{% print categ_is%}</p>

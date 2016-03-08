@@ -1,0 +1,14 @@
+<h1>Edit Item: </h1>
+  <form action="" method="post" name="edit_item_form_html">
+      {{ form.hidden_tag() }}
+      <p>
+          Please edit Item Name:<br>
+          {{ form.item_name(size=80,value=default) }}<br>
+          Please edit Item Description:<br>
+          {{ form.item_desc(size=80) }}<br>
+          <!-- Please enter Item Category:<br>
+          {{ form.item_categ }}<br> -->
+      </p>
+      
+      <p><input type="submit" value="Edit"></p>
+  </form>

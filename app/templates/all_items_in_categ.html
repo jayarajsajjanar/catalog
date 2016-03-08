@@ -21,7 +21,8 @@
     width:700px;
     float:left;
     padding:10px;    
-    height:100;
+    height:500px;
+    text-align:center;
 }
 #footer {
     background-color:black;
@@ -66,6 +67,8 @@
 </div>
 
 <div id="section">
+<h2>{%print (ii) %}</h2>
+<a href="add_item.html"> Add Item </a><br>
 <table border="1" style="width:100%">
       <tr>
       <th>ID</th>
@@ -74,12 +77,17 @@
       <th>Category</th>
       </tr>
       {% for i in Items: %}
+      {%if i[3]==ii%}
       <tr>
       <td> {% print i[0]%} </b></td>
       <td> {% print i[1]%} </b></td>
       <td> {% print i[2]%} </b></td>
-      <td> {% print i[3]%} </b></td>
+      <td> {% print i[3]%} </b></td><br>
       </tr>
+      <tr>
+      <td colspan="4"><a href="edit_item.html?i={{i[0]}}">Edit</a>    <a href="delete_item.html?i={{i[0]}}">Delete</a></td>
+      </tr>
+      {%endif%}
       {%endfor%}
       </table>
 </div>
