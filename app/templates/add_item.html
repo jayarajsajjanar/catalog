@@ -1,3 +1,5 @@
+{% extends "layout.html" %}
+{% block content %}
 <h1>Add New Item: </h1>
   <form action="" method="post" name="add_item_form_html">
       {{ form.hidden_tag() }}
@@ -12,3 +14,5 @@
       
       <p><input type="submit" value="Add"></p>
   </form>
+
+{% endblock %}

@@ -1,71 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-#header {
-    background-color:black;
-    color:white;
-    text-align:center;
-    padding:5px;
-}
-#nav {
-    line-height:30px;
-    background-color:#eeeeee;
-    height:100;
-    width:200px;
-    float:left;
-    padding:5px;
-
-}
-#section {
-    width:700px;
-    float:left;
-    padding:10px;    
-    height:100;
-}
-#footer {
-    background-color:black;
-    color:white;
-    clear:both;
-    text-align:center;
-   padding:5px;    
-}
-#login {
-    text-align:center;
-    background-color:white;
-    position: absolute;
-    bottom: 600px;
-    right: 10px;
-    width: 100px;
-    border: 3px solid #73AD21;    
-
-}
-</style>
-</head>
-<body>
-
-<div id="header">
-<h1>Items Catalog</h1>
-{% if not session.logged_in %}
-<div id="login">
-<a href="/facebook_login">Login</a>
-</div>
-{% else %}
-<div id="login">
-<a href="/logout">Logout</a>
-</div>
-{%endif%}
-</div>
-
-
-<div id="nav">
-<a href="add_categ.html"> Add Category </a><br>
-{% for i in categs: %}
-<a href="all_items_in_categ.html?i={{i[1]}}"><b> {% print (i[1])%} </b></a><br>
-{%endfor%}
-</div>
-
-<div id="section">
+{% extends "layout.html" %}
+{% block content %}
 <table border="1" style="width:100%">
       <tr>
       <th>ID</th>
@@ -83,10 +17,4 @@
       {%endfor%}
       </table>
 </div>
-
-<div id="footer">
-All rights reserved.
-</div>
-
-</body>
-</html>
+{% endblock %}

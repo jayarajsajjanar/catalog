@@ -1,10 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
 {% with messages1 = get_flashed_messages() %}
         {% if messages1 %}
-          <ul class=flashes>
           {% for message in messages1 %}
-            <li>{{ message }}</li>
+            <h3>{{ message }}<h3>
           {% endfor %}
-          </ul>
+          
         {% endif %}
       {% endwith %}
-<p> New Category Added!!!!</p>
+<h3> New Category Added!!!!</h3>
+
+{% endblock %}

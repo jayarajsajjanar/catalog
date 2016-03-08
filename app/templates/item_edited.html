@@ -1,3 +1,5 @@
+{% extends "layout.html" %}
+{% block content %}
 {% with messages3 = get_flashed_messages() %}
         {% if messages3 %}
           <ul class=flashes>
@@ -9,4 +11,6 @@
       {% endwith %}
 <h2> Item Modified Successfully!!!!</p></h2>
 
-<h2><a href="index">Return to Index</a></h2>
+<h2><a href="index" style="text-decoration:none;">Return to Index</a></h2>
+
+{% endblock %}

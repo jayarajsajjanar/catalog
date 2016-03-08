@@ -1,14 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+
 <h1>Edit Item: </h1>
   <form action="" method="post" name="edit_item_form_html">
       {{ form.hidden_tag() }}
-      <p>
-          Please edit Item Name:<br>
-          {{ form.item_name(size=80,value=default) }}<br>
-          Please edit Item Description:<br>
-          {{ form.item_desc(size=80) }}<br>
-          <!-- Please enter Item Category:<br>
-          {{ form.item_categ }}<br> -->
+      <p style="text-align:left;">
+          Please edit Item Name&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;"  {{Naming}}"
+      </p>  
+          <h3 color="blue" style="text-align:left;">{{ form.item_name(size=80,value=Naming,) }}</h3><br>
+      <p style="text-align:left;">   
+          Please edit Item Description&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;"   {{Description}}"<br>
+          <h3 style="text-align:left;">{{ form.item_desc(size=80,value=Description) }}</h3><br>
       </p>
       
       <p><input type="submit" value="Edit"></p>
   </form>
+
+{% endblock %}

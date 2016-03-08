@@ -17,7 +17,8 @@ class form_add_item(Form):
     item_name = StringField('categ_name', validators=[DataRequired()])
     item_desc = StringField('categ_name', validators=[DataRequired()])
     # item_categ = StringField('categ_name', validators=[DataRequired()])
-    item_categ = SelectField('State', choices=categs)
+    item_categ = SelectField('State')
+
 
 class form_edit_item(Form):
     item_name = StringField('categ_name', validators=[DataRequired()])
