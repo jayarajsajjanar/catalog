@@ -12,13 +12,13 @@
     line-height:30px;
     background-color:#eeeeee;
     height:100;
-    width:200px;
+    width:250px;
     float:left;
     padding:5px;
 
 }
 #section {
-    width:800px;
+    width:750px;
     float:left;
     padding:10px;    
     height:100;
@@ -29,7 +29,7 @@
     color:white;
     clear:both;
     text-align:center;
-   padding:5px;    
+    padding:5px;    
 }
 #login {
     text-align:center;
@@ -37,7 +37,7 @@
     position: absolute;
     bottom: 600px;
     right: 20px;
-    width: 100px;
+    width: 150px;
     border: 3px solid #73AD21;    
 
 }
@@ -48,16 +48,30 @@
     position: absolute;
     bottom: 600px;
     left: 20px;
-    width: 100px;
+    width: 150px;
     border: 3px solid #73AD21;    
 
 }
 
-#nav_add_del{
+#nav_add{
   text-align:center;
   background-color:white;
   position: absolute;
   left: 20px;
+  width: 150px;
+  border: 3px solid #73AD21;   
+  text-decoration:none;
+  height:20px;
+  vertical-align: middle;
+  display: inline-block;
+  line-height: normal;
+}
+
+#nav_del{
+  text-align:center;
+  background-color:white;
+  position: absolute;
+  left: 100px;
   width: 100px;
   border: 3px solid #73AD21;   
   text-decoration:none;
@@ -69,7 +83,9 @@
 
 <div id="header">
 <h1>Items Catalog</h1>
-
+{% if not session.logged_in %}
+<p> Please login to modify!! </p>
+{%endif%}
 {% if not session.logged_in %}
 <div id="login">
 <a href="/facebook_login" style="text-decoration:none;">Login</a>
@@ -89,11 +105,21 @@
 
 
 <div id="nav">
-<p><a href="add_categ.html" id="nav_add_del"> Add Category</a><br><br>
-<a href="add_categ.html" id="nav_add_del"> Del Category</a></p><br>
-{% for i in categs: %}
-<a href="all_items_in_categ.html?i={{i[1]}}" style="text-decoration:none;"><b> {% print (i[1])%} </b></a><br>
-{%endfor%}
+{% if session.logged_in %}
+<p><a href="add_categ.html" id="nav_add"> Add Category</a><br>
+{%endif%}
+All Categories:</p>
+
+<table style="width:100%; border-collapse: collapse; border=none;">
+      {% for i in categs: %}
+      <tr>
+      <td style="padding: 0;"> <a href="all_items_in_categ.html?i={{i[1]}}" style="text-decoration:none;"><b> {% print (i[1])%} </b></a> </b></td>
+      {% if session.logged_in %}
+      <td style="padding: 0;"> <a href="del_categ.html?i={{i[0]}}" style="text-decoration:none;"> Del Category</a></td>
+      {%endif%}
+      </tr>
+      {%endfor%}
+</table>
 </div>
 
 <div id="section">

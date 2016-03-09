@@ -31,15 +31,24 @@ def get_facebook_token():
 def facebook_login():
     return facebook.authorize(callback=url_for('facebook_authorized',next=request.args.get('next'), _external=True))
 
+#Could not place this import statement at the top. 404 error occuring.
+from models import Items
+from models import Cat
+from models import db    
+
+items_py=[]
+for i in Items.query.all():
+    items_py.append((str(i.id),str(i.Naming),str(i.Description),str(i.Cat.name)))
+categs=[]
+for i in Cat.query.all():
+    categs.append((str(i.id),str(i.name)))
+
 @app.route('/')
 @app.route('/index')
 def index():
     items_py=[]
     for i in Items.query.all():
         items_py.append((str(i.id),str(i.Naming),str(i.Description),str(i.Cat.name)))
-       # items_py=[]
-    # for i in Items.query.all():
-    #     items_py.append(i)
     categs=[]
     for i in Cat.query.all():
         categs.append((str(i.id),str(i.name)))
@@ -50,9 +59,6 @@ def layout():
     items_py=[]
     for i in Items.query.all():
         items_py.append((str(i.id),str(i.Naming),str(i.Description),str(i.Cat.name)))
-       # items_py=[]
-    # for i in Items.query.all():
-    #     items_py.append(i)
     categs=[]
     for i in Cat.query.all():
         categs.append((str(i.id),str(i.name)))
@@ -69,7 +75,9 @@ def facebook_authorized(resp):
     session['facebook_token'] = (resp['access_token'], '')
 
     me = facebook.get('/me')
-    return 'Logged in as id=%s name=%s' % (me.data['id'], me.data['name'])
+    #Below code extracts information from 'me' object!!!!!
+    # return 'Logged in as id=%s name=%s' % (me.data['id'], me.data['name'])
+    return render_template('index.html',title='index',Items=items_py,categs=categs)
 
 @app.route("/logout")
 def logout():
@@ -80,59 +88,40 @@ def pop_login_session():
     session.pop('logged_in', None)
     session.pop('facebook_token', None)
 
-#Could not place this import statement at the top. 404 error occuring.
-from models import Items
-from models import Cat
-from models import db    
+
 
 @app.route('/categories_all')
 # @login_required
 def Categories():
-	items_py=[]
-	for i in Items.query.all():
-		items_py.append((str(i.id),str(i.Naming),str(i.Description),str(i.Cat.name)))
 
-	categs=[]
-	for i in Cat.query.all():
-		categs.append((str(i.id),str(i.name)))
 	return render_template('categories_all.html',title='Categories_all',Items=items_py,categs=categs)
 
 @app.route('/all_items_in_categ.html')
-# @login_required
 def all_items_in_Categories():
-
-    ii = request.args.get('i')
     items_py=[]
     for i in Items.query.all():
         items_py.append((str(i.id),str(i.Naming),str(i.Description),str(i.Cat.name)))
-       # items_py=[]
-    # for i in Items.query.all():
-    #     items_py.append(i)
     categs=[]
     for i in Cat.query.all():
         categs.append((str(i.id),str(i.name)))
+    ii = request.args.get('i')
+
     return render_template('all_items_in_categ.html',title='All_Items_In_Categories',Items=items_py,categs=categs,ii=ii)
     # return ii
 
 from .forms import form_add_categ,form_add_item,form_edit_item
 
-# index view function suppressed for brevity
 
 @app.route('/add_categ.html', methods=['GET', 'POST'])
 def add_categ():
 
     form = form_add_categ()
-
     items_py=[]
     for i in Items.query.all():
         items_py.append((str(i.id),str(i.Naming),str(i.Description),str(i.Cat.name)))
-       # items_py=[]
-    # for i in Items.query.all():
-    #     items_py.append(i)
     categs=[]
     for i in Cat.query.all():
         categs.append((str(i.id),str(i.name)))
-
     if form.validate_on_submit():
     	new_categ=str(form.categ_name.data)
     	c1=Cat(new_categ)
@@ -151,18 +140,14 @@ def add_categ():
 def add_item():
 
     form = form_add_item()
-    
-    
     items_py=[]
     for i in Items.query.all():
         items_py.append((str(i.id),str(i.Naming),str(i.Description),str(i.Cat.name)))
-
     categs=[]
     for i in Cat.query.all():
         categs.append((str(i.id),str(i.name)))
-
     form.item_categ.choices = categs
-
+    
     if form.validate_on_submit():
         item_name=str(form.item_name.data)
         item_desc=str(form.item_desc.data)
@@ -179,14 +164,6 @@ def add_item():
         flash('Category addedddd:',i1.Naming)
         return render_template('item_added.html',title='Item_added',Items=items_py,categs=categs)
 
-    items_py=[]
-    for i in Items.query.all():
-        items_py.append((str(i.id),str(i.Naming),str(i.Description),str(i.Cat.name)))
-
-    categs=[]
-    for i in Cat.query.all():
-        categs.append((str(i.id),str(i.name)))   
-
     return render_template('add_item.html', 
                            title='Add Item',
                            form=form,Items=items_py,categs=categs)
@@ -194,6 +171,12 @@ def add_item():
 @app.route('/delete_item.html', methods=['GET', 'POST'])
 def delete_item():
     ii = request.args.get('i')
+    items_py=[]
+    for i in Items.query.all():
+        items_py.append((str(i.id),str(i.Naming),str(i.Description),str(i.Cat.name)))
+    categs=[]
+    for i in Cat.query.all():
+        categs.append((str(i.id),str(i.name)))
     for i in Items.query.all():
         if int(i.id)==int(ii):
             item_is = i
@@ -202,14 +185,37 @@ def delete_item():
     db.session.delete(item_is)
     db.session.commit()
 
-    return "Deleted : %s" %deleted_item_name
+    return render_template('delete_item.html',title='Delete Item',deleted_item_name=deleted_item_name,Items=items_py,categs=categs)
 
+@app.route('/del_categ.html', methods=['GET', 'POST'])
+def delete_categ():
+    ii = request.args.get('i')
+    items_py=[]
+    for i in Items.query.all():
+        items_py.append((str(i.id),str(i.Naming),str(i.Description),str(i.Cat.name)))
+    categs=[]
+    for i in Cat.query.all():
+        categs.append((str(i.id),str(i.name)))
+    for i in Cat.query.all():
+        if int(i.id)==int(ii):
+            categ_is = i
+            deleted_categ_name = i.name
+            break
+    db.session.delete(categ_is)
+    db.session.commit()
+
+    return render_template('delete_categ.html',title='Delete Categ',deleted_categ_name=deleted_categ_name,Items=items_py,categs=categs)
 
 @app.route('/edit_item.html', methods=['GET', 'POST'])
 def edit_item():
 
     form = form_edit_item()
-    
+    items_py=[]
+    for i in Items.query.all():
+        items_py.append((str(i.id),str(i.Naming),str(i.Description),str(i.Cat.name)))
+    categs=[]
+    for i in Cat.query.all():
+        categs.append((str(i.id),str(i.name)))
     ii = request.args.get('i')
     
     for i in Items.query.all():
@@ -221,13 +227,6 @@ def edit_item():
     form.item_name.value=edit_item_is.Naming
     aa=edit_item_is.Naming
     bb=edit_item_is.Description
-    items_py=[]
-    for i in Items.query.all():
-        items_py.append((str(i.id),str(i.Naming),str(i.Description),str(i.Cat.name)))
-
-    categs=[]
-    for i in Cat.query.all():
-        categs.append((str(i.id),str(i.name)))
 
     if form.validate_on_submit():
         item_name=str(form.item_name.data)
