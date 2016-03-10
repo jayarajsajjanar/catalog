@@ -1,7 +1,7 @@
 from flask import render_template
 from app import app
 
-from flask import Flask, abort, request,session,redirect,url_for,flash
+from flask import Flask, abort, request,session,redirect,url_for,flash,jsonify
 from uuid import uuid4
 import requests
 import requests.auth
@@ -161,7 +161,7 @@ def add_item():
         db.session.add(i1)
         db.session.commit()
         # print ('New Category Added = {}').format(new_categ)
-        flash('Category addedddd:',i1.Naming)
+        flash('Item addedddd:',i1.Naming)
         return render_template('item_added.html',title='Item_added',Items=items_py,categs=categs)
 
     return render_template('add_item.html', 
@@ -246,3 +246,56 @@ def edit_item():
     return render_template('edit_item.html', 
                            title='Edit Item',
                            form=form,edit_item_is=edit_item_is,Items=items_py,categs=categs,Naming=aa,Description=bb)
+
+
+from flask_restful import reqparse, abort, Api, Resource
+api = Api(app)
+
+TODOS = {
+    'todo1': {'task': 'build an API'},
+    'todo2': {'task': '?????'},
+    'todo3': {'task': 'profit!'},
+}
+
+def abort_if_todo_doesnt_exist(todo_id):
+    if todo_id not in TODOS:
+        abort(404, message="Todo {} doesn't exist".format(todo_id))
+
+# Todo
+# shows a single todo item and lets you delete a todo item
+class All_Categories(Resource):
+    def get(self):
+        # abort_if_todo_doesnt_exist(todo_id)
+        # return TODOS[todo_id]
+        all_categs=[{}]
+        for i in Cat.query.all():
+            # sonify(all_categs=[i.serialize])
+            # ret=jsonify(all_categs)
+            # (all_categs.append(i.serialize))
+            return i.serialize
+        # for i in Cat.query.all():
+        #     all_categs.append(i.serialize)
+# TodoList
+# shows a list of all todos, and lets you POST to add new tasks
+class All_Items(Resource):
+    def get(self):
+        # for i in Cat.query.all():
+        #     for j in i.its_items:
+        #         print i.id,j.id
+        # # return TODOS
+        ret=jsonify(all_categories=[i.serialize for i in Cat.query.all()])
+        return ret
+        # cat=[{}]
+        # ite=[]
+        # for i in Cat.query.all():
+        #     for j in i.its_items:
+        #         cat.append(i.name)
+        #         cat[i.id]=j.Naming
+        # ret=jsonify(cat=cat)
+        # return ret
+
+##
+## Actually setup the Api resource routing here
+##
+api.add_resource(All_Items, '/all_items.json')
+api.add_resource(All_Categories, '/all_categories.json')
