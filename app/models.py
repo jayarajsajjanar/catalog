@@ -1,11 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask.ext.restless import APIManager
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test1.db'
 db = SQLAlchemy(app)
-manager = APIManager(app, flask_sqlalchemy_db=db)
 
 
 
@@ -48,5 +46,3 @@ class Cat(db.Model):
 	def __init__(self, name):
 		self.name = name
 
-Items_blueprint = manager.create_api(Items, methods=['GET', 'POST'])
-Category_blueprint = manager.create_api(Cat, methods=['GET', 'POST'])
