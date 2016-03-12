@@ -21,6 +21,7 @@
 ###Steps for running the project:
 1. **Clone** the repo of the current project using - `git clone https://github.com/jayarajsajjanar/catalog.git` 
 2.  Use virtualenv and the requirements.txt provided to install necessary libraries and softwares.
+3.  Need to have facebook login details for editing/deleting. (Oauth is provided for Facebook only)
 2. `cd app` and then  `python db_create.py` to create the database and to instantiate minimally required objects.
 3. `cd .` to return to parent directory. Hit `python run.py` to run the project. Visit `localhost:5000` on your browser.
 4.  Have fun adding/deleting/editing categories and items.
