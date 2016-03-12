@@ -4,7 +4,7 @@ from models import *
 db.drop_all()
 db.create_all()
 
-c1=Cat("Hockey")c1
+c1=Cat("Hockey")
 c2=Cat("Football")
 c3=Cat("Baseball")
 c4=Cat("Rugby")
