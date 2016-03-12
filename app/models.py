@@ -1,4 +1,6 @@
 from flask import Flask
+
+#Flask_sqlalchemy is being used not just "SQLAlchemy"
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -6,13 +8,14 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test1.db'
 db = SQLAlchemy(app)
 
 
-
-
+#Model for items in a category
 class Items(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	Naming = db.Column(db.String(80))
 	Description = db.Column(db.String)
 	Cat_id = db.Column(db.Integer, db.ForeignKey('Cat.id'))
+	
+	###The items of a category can be accessed by using "Cat_object.its_items"
 	Cat= db.relationship('Cat',
 		backref=db.backref('its_items', lazy='dynamic'))
 
@@ -25,13 +28,18 @@ class Items(db.Model):
 		self.Description = Description
 		self.Cat=Categoriess
 
-
+#Model for Category. It has multiple items. One to many relationship.
 class Cat(db.Model):
+	#Need to specify table name. ORM doesnt do this for us.
 	__tablename__ ='Cat'
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(50))
+
+	# Relationship is configured in a way that if a "Category" is deleted, then its associated items are
+	# automatically deleted.
 	items=db.relationship("Items",cascade="save-update, merge, delete")
 
+	#Below property is used in providing JSON api end point. A datastructure that can be "jsonify" is returned.
 	@property
 	def serialize(self):
 		outer=[]

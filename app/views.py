@@ -13,6 +13,7 @@ from flask.ext.login import LoginManager, UserMixin, login_user, logout_user,cur
 
 oauth = OAuth()
 
+#As of now. Only facebook authorisation is being provided.
 facebook = oauth.remote_app('facebook',
     base_url='https://graph.facebook.com/',
     request_token_url=None,
@@ -36,6 +37,8 @@ from models import Items
 from models import Cat
 from models import db    
 
+
+#The query object is converted into a list. For easy accessibility. 
 items_py=[]
 for i in Items.query.all():
     items_py.append((str(i.id),str(i.Naming),str(i.Description),str(i.Cat.name)))
@@ -54,6 +57,8 @@ def index():
         categs.append((str(i.id),str(i.name)))
     return render_template('index.html',title='index',Items=items_py,categs=categs)
 
+#Other views extend this view. 
+#Must send the below data structures in the views that extend "layout".
 @app.route('/layout.html')
 def layout():
     items_py=[]
@@ -67,15 +72,13 @@ def layout():
 @app.route("/facebook_authorized")
 @facebook.authorized_handler
 def facebook_authorized(resp):
-    next_url = request.args.get('next') or url_for('index')
-    if resp is None or 'access_token' not in resp:
-        return redirect(next_url)
 
     session['logged_in'] = True
     session['facebook_token'] = (resp['access_token'], '')
 
-    me = facebook.get('/me')
+    
     #Below code extracts information from 'me' object!!!!!
+    #me = facebook.get('/me')
     # return 'Logged in as id=%s name=%s' % (me.data['id'], me.data['name'])
     return render_template('index.html',title='index',Items=items_py,categs=categs)
 
@@ -89,13 +92,14 @@ def pop_login_session():
     session.pop('facebook_token', None)
 
 
-
+#For development and debugging purposes. 
 @app.route('/categories_all')
 # @login_required
 def Categories():
 
 	return render_template('categories_all.html',title='Categories_all',Items=items_py,categs=categs)
 
+#This view is called when particular "Category" is clicked. To display items in a category.
 @app.route('/all_items_in_categ.html')
 def all_items_in_Categories():
     items_py=[]
@@ -108,6 +112,7 @@ def all_items_in_Categories():
 
     return render_template('all_items_in_categ.html',title='All_Items_In_Categories',Items=items_py,categs=categs,ii=ii)
     # return ii
+
 
 from .forms import form_add_categ,form_add_item,form_edit_item
 
@@ -129,6 +134,7 @@ def add_categ():
     	db.session.commit()
         # print ('New Category Added = {}').format(new_categ)
         message = 'Category addedddd:' + c1.name
+        #Flash displays a message only on first subsequent request.
         flash(message)
         return render_template('categ_added.html',title='Categ_added',Items=items_py,categs=categs)
         # return  render_template('index.html',user=new_categ)
@@ -161,7 +167,8 @@ def add_item():
         db.session.add(i1)
         db.session.commit()
         # print ('New Category Added = {}').format(new_categ)
-        flash('Item addedddd:',i1.Naming)
+        message="Item Added:"+i1.Naming
+        flash(message)
         return render_template('item_added.html',title='Item_added',Items=items_py,categs=categs)
 
     return render_template('add_item.html', 
@@ -187,6 +194,7 @@ def delete_item():
 
     return render_template('delete_item.html',title='Delete Item',deleted_item_name=deleted_item_name,Items=items_py,categs=categs)
 
+#If category is deleted then its associated items too are to be deleted.(cascading)
 @app.route('/del_categ.html', methods=['GET', 'POST'])
 def delete_categ():
     ii = request.args.get('i')
@@ -208,14 +216,16 @@ def delete_categ():
 
 @app.route('/edit_item.html', methods=['GET', 'POST'])
 def edit_item():
-
+    #importing a form.
     form = form_edit_item()
+    
     items_py=[]
     for i in Items.query.all():
         items_py.append((str(i.id),str(i.Naming),str(i.Description),str(i.Cat.name)))
     categs=[]
     for i in Cat.query.all():
         categs.append((str(i.id),str(i.name)))
+    
     ii = request.args.get('i')
     
     for i in Items.query.all():
@@ -224,6 +234,7 @@ def edit_item():
             edit_item_is = i
             edit_item_id_is = i.id
             break
+    
     form.item_name.value=edit_item_is.Naming
     aa=edit_item_is.Naming
     bb=edit_item_is.Description
@@ -247,55 +258,30 @@ def edit_item():
                            title='Edit Item',
                            form=form,edit_item_is=edit_item_is,Items=items_py,categs=categs,Naming=aa,Description=bb)
 
-
+######Deals with providing an API end point
+######Below JOSN endpoint will be provided.
 from flask_restful import reqparse, abort, Api, Resource
 api = Api(app)
 
-TODOS = {
-    'todo1': {'task': 'build an API'},
-    'todo2': {'task': '?????'},
-    'todo3': {'task': 'profit!'},
-}
-
-def abort_if_todo_doesnt_exist(todo_id):
-    if todo_id not in TODOS:
-        abort(404, message="Todo {} doesn't exist".format(todo_id))
-
-# Todo
-# shows a single todo item and lets you delete a todo item
-class All_Categories(Resource):
-    def get(self):
-        # abort_if_todo_doesnt_exist(todo_id)
-        # return TODOS[todo_id]
-        all_categs=[{}]
-        for i in Cat.query.all():
-            # sonify(all_categs=[i.serialize])
-            # ret=jsonify(all_categs)
-            # (all_categs.append(i.serialize))
-            return i.serialize
-        # for i in Cat.query.all():
-        #     all_categs.append(i.serialize)
-# TodoList
-# shows a list of all todos, and lets you POST to add new tasks
+######Optional. Provides only Category information.
+# class All_Categories(Resource):
+#     def get(self):
+        
+#         all_categs=[{}]
+#         for i in Cat.query.all():
+            
+#             return i.serialize
+        
+#### At "/all_items.json", the entire catalog is displayed.
 class All_Items(Resource):
     def get(self):
-        # for i in Cat.query.all():
-        #     for j in i.its_items:
-        #         print i.id,j.id
-        # # return TODOS
+        
         ret=jsonify(all_categories=[i.serialize for i in Cat.query.all()])
         return ret
-        # cat=[{}]
-        # ite=[]
-        # for i in Cat.query.all():
-        #     for j in i.its_items:
-        #         cat.append(i.name)
-        #         cat[i.id]=j.Naming
-        # ret=jsonify(cat=cat)
-        # return ret
+        
 
 ##
-## Actually setup the Api resource routing here
+## Actually setup the Api resource routing here.
 ##
 api.add_resource(All_Items, '/all_items.json')
-api.add_resource(All_Categories, '/all_categories.json')
+# api.add_resource(All_Categories, '/all_categories.json')
