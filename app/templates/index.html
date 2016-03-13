@@ -1,6 +1,13 @@
 {% extends "layout.html" %}
 {% block content %}
 <h2>Index Page</h2>
+{% with messages3 = get_flashed_messages() %}
+        {% if messages3 %}
+          {% for message in messages3 %}
+            <h3>{{ message }}</h3>
+          {% endfor %}
+        {% endif %}
+{% endwith %}
 <table border="1" style="width:100%">
       <tr>
       <th>Item ID</th>
