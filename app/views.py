@@ -1,5 +1,8 @@
+#!flask/bin/python
+
+from flask import Flask
+
 from flask import render_template
-from app import app
 
 from flask import Flask, abort, request, session
 from flask import redirect, url_for, flash, jsonify
@@ -18,13 +21,23 @@ from flask.ext.login import current_user, login_required
 
 from flask_restful import reqparse, abort, Api, Resource
 
-from .forms import form_add_categ, form_add_item, form_edit_item
+from forms import form_add_categ, form_add_item, form_edit_item
 
 from models import Items
 from models import Cat
 from models import db
 
 from functools import wraps
+
+app = Flask(__name__)
+
+
+app.secret_key = 'super secret key'
+app.config['SESSION_TYPE'] = 'filesystem'
+
+
+
+
 
 oauth = OAuth()
 
@@ -64,7 +77,6 @@ for items_iter in Items.query.all():
 categs = []
 for categs_iter in Cat.query.all():
     categs.append((str(categs_iter.id), str(categs_iter.name)))
-
 
 @app.route('/')
 @app.route('/index')
@@ -149,6 +161,8 @@ def login_required(f):
 @app.route("/logout")
 def logout():
     pop_login_session()
+    global sess
+    sess = False
     return "logged out!!!"
 
 
@@ -419,3 +433,6 @@ class All_Items(Resource):
 ##
 api.add_resource(All_Items, '/all_items.json')
 # api.add_resource(All_Categories, '/all_categories.json')
+
+# Needs to be '0.0.0.0' for it to be accessing on host when run on vagrant.
+app.run(host='0.0.0.0', debug=True)

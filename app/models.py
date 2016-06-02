@@ -1,9 +1,9 @@
-from flask import Flask
 
+from flask import Flask
 # Flask_sqlalchemy is being used - not just "SQLAlchemy"
 from flask_sqlalchemy import SQLAlchemy
-
 app = Flask(__name__)
+# from views import app
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test1.db'
 db = SQLAlchemy(app)
 
