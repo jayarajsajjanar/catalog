@@ -11,7 +11,7 @@ Jinja2==2.7.2
 WTForms==2.1
 Werkzeug==0.9.4
 Whoosh==2.7.2
-httplib2==0.9.2
+httplib2==0.19.0
 psycopg2==2.4.5
 python-openid==2.2.5
 requests==2.2.1
